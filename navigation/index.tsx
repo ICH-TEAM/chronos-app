@@ -7,7 +7,7 @@ import {
 } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import * as React from "react"
-import { ColorSchemeName, Pressable } from "react-native"
+import { ColorSchemeName, Pressable, View } from "react-native"
 
 import Colors from "../constants/Colors"
 import useColorScheme from "../hooks/useColorScheme"
@@ -22,6 +22,10 @@ import {
 } from "../@types/types"
 import LinkingConfiguration from "./LinkingConfiguration"
 import { Icon } from "../components"
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
+
+const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
 function BottomTabNavigator() {
   const colorScheme = useColorScheme()
@@ -44,13 +48,17 @@ function BottomTabNavigator() {
               onPress={() => navigation.navigate("Modal")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
+                backgroundColor: "red",
               })}
             >
               <FontAwesome
                 name="info-circle"
                 size={25}
                 color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
+                style={{
+                  marginRight: 15,
+                  backgroundColor: "green",
+                }}
               />
             </Pressable>
           ),
@@ -107,6 +115,3 @@ export default function Navigation({
  * A root stack navigator is often used for displaying modals on top of all other content.
  * https://reactnavigation.org/docs/modal
  */
-const Stack = createNativeStackNavigator<RootStackParamList>()
-
-const BottomTab = createBottomTabNavigator<RootTabParamList>()
