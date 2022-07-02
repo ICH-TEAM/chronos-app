@@ -21,13 +21,7 @@ import {
   RootTabScreenProps,
 } from "../@types/types"
 import LinkingConfiguration from "./LinkingConfiguration"
-
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"]
-  color: string
-}) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />
-}
+import { Icon } from "../components"
 
 function BottomTabNavigator() {
   const colorScheme = useColorScheme()
@@ -44,7 +38,7 @@ function BottomTabNavigator() {
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
           title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate("Modal")}
@@ -67,7 +61,7 @@ function BottomTabNavigator() {
         component={TabTwoScreen}
         options={{
           title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
         }}
       />
     </BottomTab.Navigator>
