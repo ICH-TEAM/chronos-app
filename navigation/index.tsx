@@ -19,7 +19,7 @@ import {
   RootStackParamList,
   RootTabParamList,
   RootTabScreenProps,
-} from "../@types/types"
+} from "../@types/navigation"
 import LinkingConfiguration from "./LinkingConfiguration"
 import { Icon } from "../components"
 
@@ -48,7 +48,6 @@ function BottomTabNavigator() {
               onPress={() => navigation.navigate("Modal")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
-                backgroundColor: "red",
               })}
             >
               <FontAwesome
@@ -57,7 +56,6 @@ function BottomTabNavigator() {
                 color={Colors[colorScheme].text}
                 style={{
                   marginRight: 15,
-                  backgroundColor: "green",
                 }}
               />
             </Pressable>
