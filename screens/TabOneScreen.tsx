@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native"
 import EditScreenInfo from "../components/EditScreenInfo"
 import { Text, View } from "../components/Themed"
 
+import Button from "../components/Button/Button"
+import ButtonCourse from "../components/Button/ButtonCourse"
 export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<"TabOne">) {
@@ -14,6 +16,9 @@ export default function TabOneScreen({
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
+
+      <Button title="Testing" />
+      <ButtonCourse title="CALCULO DIFERENCIAL" code="CC1035 - B" time="14:00 - 17:00" backgroundColor="#8572ff" color="#ffffff" />
       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
     </View>
   )
