@@ -1,22 +1,44 @@
-import { FC } from "react"
-import { StyleSheet, Text, TouchableOpacityBase } from "react-native"
+import { FC} from 'react';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
-interface ButtonProps {
-  title: string
+
+interface ButProps {
+    title: string;
+    onPress?: ()=>void;
 }
-
-const ButtonComponent: FC<ButtonProps> = ({ title }) => {
-  return (
-    <TouchableOpacityBase>
-      <view>
-        <Text>{title}</Text>
-      </view>
-    </TouchableOpacityBase>
-  )
-}
-
 const styles = StyleSheet.create({
-  buttonContainer: {},
-})
+    button: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        backgroundColor: "#3c72ff",
+        height: 40, 
+        width: 90,
+        margin: 5
+    },
 
-export default ButtonComponent
+    buttonText: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 16,
+        color: "#ffffff",
+    },
+});
+const Button: FC<ButProps> = (ButProps)=> {
+    const { title, onPress } = ButProps
+    return (
+        <TouchableOpacity
+            style={styles.button}
+            onPress={onPress}
+        >
+            <View>
+                <Text
+                    style={styles.buttonText}>
+                    {title}
+                </Text>
+            </View>
+        </TouchableOpacity>
+    )
+}
+
+export default Button;
