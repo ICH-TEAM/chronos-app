@@ -13,6 +13,9 @@ declare global {
     Root: NavigatorScreenParams<RootTabParamList> | undefined
     Modal: undefined
     NotFound: undefined
+    StepOne: undefined
+    StepSchooll: undefined
+    StepCourse: undefined
   }
 
   type RootStackScreenProps<Screen extends keyof RootStackParamList> =
@@ -21,6 +24,10 @@ declare global {
   type RootTabParamList = {
     Home: undefined
     SignIn: undefined
+    SignUp: undefined
+    StepOne: undefined
+    SelectSchooll: undefined
+    SelectCourse: undefined
   }
 
   type RootTabScreenProps<Screen extends keyof RootTabParamList> =

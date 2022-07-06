@@ -7,13 +7,18 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import * as React from "react"
 import { ColorSchemeName } from "react-native"
-
 import Colors from "../constants/Colors"
 import useColorScheme from "../hooks/useColorScheme"
 import ModalScreen from "../screens/ModalScreen"
 import NotFoundScreen from "../screens/NotFoundScreen"
-import Home from "../screens/Home"
-import SignIn from "../screens/LogIn/SignIn"
+import {
+  Home,
+  SignIn,
+  SignUp,
+  StepOne,
+  SelectSchool,
+  SelectCourse,
+} from "../screens"
 import LinkingConfiguration from "./LinkingConfiguration"
 import { Icon } from "../components"
 
@@ -37,8 +42,7 @@ function BottomTabNavigator() {
         component={Home}
         options={({ navigation }: RootTabScreenProps<"Home">) => ({
           title: "Home",
-          // tabBarAccessibilityLabel: false,
-          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Icon name="home" color={color} />,
         })}
       />
       <BottomTab.Screen
@@ -46,6 +50,38 @@ function BottomTabNavigator() {
         component={SignIn}
         options={{
           title: "Sign In",
+          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{
+          title: "Sign Up",
+          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="StepOne"
+        component={StepOne}
+        options={{
+          title: "Step One",
+          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="SelectSchool"
+        component={SelectSchool}
+        options={{
+          title: "Step One",
+          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="SelectCourse"
+        component={SelectCourse}
+        options={{
+          title: "setp 3",
           tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
         }}
       />

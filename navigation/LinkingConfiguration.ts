@@ -18,6 +18,21 @@ const linking: LinkingOptions<RootStackParamList> = {
               SignIn: "two",
             },
           },
+          StepOne: {
+            screens: {
+              StepOne: "tres",
+            },
+          },
+          SelectSchooll: {
+            screens: {
+              SelectSchooll: "cuatro",
+            },
+          },
+          SelectCourse: {
+            screens: {
+              SelectCourse: "cuatro",
+            },
+          },
         },
       },
       Modal: "modal",
