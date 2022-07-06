@@ -2,7 +2,12 @@ import Logo from "./../../assets/svg/chronos-logo"
 import { ScrollView, StyleSheet, TouchableOpacity } from "react-native"
 import { Text, View } from "../../components/Themed"
 import { Input, Button, Separator } from "../../components"
+import SelectDropdown from "react-native-select-dropdown"
+
 const gap = 30
+
+const genders = ["Masculino", "Femenino"]
+
 const SignUp = () => {
   return (
     <ScrollView>
@@ -22,6 +27,22 @@ const SignUp = () => {
           <Input placeholder="Contraseña" secureTextEntry />
           <Separator value={gap} />
           <Input placeholder="Confirmar contraseña" secureTextEntry />
+          <Separator value={gap} />
+          <SelectDropdown
+            buttonStyle={styles.selectButton}
+            buttonTextStyle={styles.selectText}
+            data={genders}
+            onSelect={(selectedItem, index) => {
+              console.log(selectedItem, index)
+            }}
+            defaultButtonText="Elije un género"
+            buttonTextAfterSelection={(selectedItem, index) => {
+              return selectedItem
+            }}
+            rowTextForSelection={(item, index) => {
+              return item
+            }}
+          />
           <Separator value={gap} />
           <Button label="Registrar" />
         </View>
@@ -50,7 +71,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 30,
   },
-
+  selectButton: {
+    backgroundColor: "#F7F9FC",
+    borderColor: "#E7E7E7",
+    paddingVertical: 10,
+    paddingLeft: 20,
+    borderWidth: 1,
+    width: 250,
+    borderRadius: 5,
+  },
+  selectText: {
+    fontSize: 15,
+    color: "#7B7B7B",
+  },
   stretch: {
     width: 50,
     height: 200,
