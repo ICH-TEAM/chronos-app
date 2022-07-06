@@ -21,6 +21,7 @@ declare global {
   type RootTabParamList = {
     Home: undefined
     SignIn: undefined
+    // SignUp: undefined
   }
 
   type RootTabScreenProps<Screen extends keyof RootTabParamList> =
