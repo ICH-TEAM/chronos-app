@@ -15,7 +15,7 @@ const linking: LinkingOptions<RootStackParamList> = {
           },
           TabTwo: {
             screens: {
-              TabTwoScreen: "two",
+              SignIn: "two",
             },
           },
         },
