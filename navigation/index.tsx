@@ -14,7 +14,7 @@ import useColorScheme from "../hooks/useColorScheme"
 import ModalScreen from "../screens/ModalScreen"
 import NotFoundScreen from "../screens/NotFoundScreen"
 import Home from "../screens/Home"
-import TabTwoScreen from "../screens/TabTwoScreen"
+import SignIn from "../screens/LogIn/SignIn"
 import LinkingConfiguration from "./LinkingConfiguration"
 import { Icon } from "../components"
 
@@ -59,9 +59,9 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoScreen}
+        component={SignIn}
         options={{
-          title: "Tab Two",
+          title: "Sign In",
           tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
         }}
       />
