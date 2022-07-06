@@ -19,7 +19,7 @@ declare global {
     NativeStackScreenProps<RootStackParamList, Screen>
 
   type RootTabParamList = {
-    TabOne: undefined
+    Home: undefined
     TabTwo: undefined
   }
 
