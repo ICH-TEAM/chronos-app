@@ -33,6 +33,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               SelectCourse: "cuatro",
             },
           },
+          Course: {
+            screens: {
+              Course: "cinco",
+            },
+          },
         },
       },
       Modal: "modal",

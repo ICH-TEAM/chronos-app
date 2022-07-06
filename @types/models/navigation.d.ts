@@ -28,6 +28,7 @@ declare global {
     StepOne: undefined
     SelectSchooll: undefined
     SelectCourse: undefined
+    Course: undefined
   }
 
   type RootTabScreenProps<Screen extends keyof RootTabParamList> =

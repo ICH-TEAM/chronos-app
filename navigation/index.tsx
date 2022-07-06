@@ -13,6 +13,7 @@ import ModalScreen from "../screens/ModalScreen"
 import NotFoundScreen from "../screens/NotFoundScreen"
 import {
   Home,
+  Course,
   SignIn,
   SignUp,
   StepOne,
@@ -70,7 +71,7 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="SelectSchool"
+        name="SelectSchooll"
         component={SelectSchool}
         options={{
           title: "Step One",
@@ -82,6 +83,14 @@ function BottomTabNavigator() {
         component={SelectCourse}
         options={{
           title: "setp 3",
+          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Course"
+        component={Course}
+        options={{
+          title: "Course",
           tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
         }}
       />
