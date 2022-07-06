@@ -1,49 +1,38 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, TextInput } from "react-native";
-
-
-
-interface InputProps {
-    value?: string;
-    type: 'default' | 'numeric';
-    maxlength?: number;
-    placeholder: string;
-    placeholderTextColor?: string;
-    editable?: boolean;
-    onChangeText?: (value: string) => void;
+import React, { FC } from "react"
+import {
+  SafeAreaView,
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+} from "react-native"
+interface InputProps extends TextInputProps {}
+const InputComponent: FC<InputProps> = (props) => {
+  const { ...rest } = props
+  return (
+    <SafeAreaView>
+      <TextInput
+        style={styles.input}
+        placeholderTextColor={"#7b7b7b"}
+        autoCorrect={false}
+        textAlign={"left"}
+        autoCapitalize={"none"}
+        {...rest}
+      />
+    </SafeAreaView>
+  )
 }
-const UselessTextInput = (props: InputProps) => {
-    const { value, type, placeholder, placeholderTextColor,
-        maxlength, editable, onChangeText } = props;
-    return (
-        <SafeAreaView>
-            <TextInput
-                style = {styles.input}
-                value = {value}
-                onChangeText = {onChangeText}
-                maxLength = {maxlength}
-                placeholder = {placeholder}
-                placeholderTextColor = {"#7b7b7b"}
-                autoCorrect = {false}
-                keyboardType= {type}
-                editable = {editable}
-                textAlign = {"left"}
-                autoCapitalize = {"none"}
-            />
-        </SafeAreaView>
-    );
-};
 
 const styles = StyleSheet.create({
-    input: {
-        backgroundColor:"#e7e7e7",
-        margin: 10,
-        padding: 10,
-        paddingLeft: 20,
-        borderWidth: 1,
-        height: 50,
-        width: 200,
-    },
-});
+  input: {
+    backgroundColor: "#F7F9FC",
+    borderColor: "#E7E7E7",
+    paddingVertical: 10,
+    paddingLeft: 20,
+    borderWidth: 1,
+    width: 250,
+    borderRadius: 5,
+    fontSize: 15,
+  },
+})
 
-export default UselessTextInput;
+export default InputComponent

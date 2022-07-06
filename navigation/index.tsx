@@ -1,4 +1,3 @@
-import { FontAwesome } from "@expo/vector-icons"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import {
   NavigationContainer,
@@ -7,7 +6,7 @@ import {
 } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import * as React from "react"
-import { ColorSchemeName, Pressable, View } from "react-native"
+import { ColorSchemeName } from "react-native"
 
 import Colors from "../constants/Colors"
 import useColorScheme from "../hooks/useColorScheme"
@@ -30,6 +29,7 @@ function BottomTabNavigator() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        headerShown: false,
       }}
     >
       <BottomTab.Screen
@@ -37,28 +37,12 @@ function BottomTabNavigator() {
         component={Home}
         options={({ navigation }: RootTabScreenProps<"Home">) => ({
           title: "Home",
+          // tabBarAccessibilityLabel: false,
           tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate("Modal")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{
-                  marginRight: 15,
-                }}
-              />
-            </Pressable>
-          ),
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="SignIn"
         component={SignIn}
         options={{
           title: "Sign In",
