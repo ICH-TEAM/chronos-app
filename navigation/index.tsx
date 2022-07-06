@@ -7,12 +7,11 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import * as React from "react"
 import { ColorSchemeName } from "react-native"
-
 import Colors from "../constants/Colors"
 import useColorScheme from "../hooks/useColorScheme"
 import ModalScreen from "../screens/ModalScreen"
 import NotFoundScreen from "../screens/NotFoundScreen"
-import { Home, SignIn, SignUp, StepOne } from "../screens"
+import { Home, SignIn, SignUp, StepOne, SelectSchool } from "../screens"
 import LinkingConfiguration from "./LinkingConfiguration"
 import { Icon } from "../components"
 
@@ -58,6 +57,14 @@ function BottomTabNavigator() {
       <BottomTab.Screen
         name="StepOne"
         component={StepOne}
+        options={{
+          title: "Step One",
+          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="SelectSchool"
+        component={SelectSchool}
         options={{
           title: "Step One",
           tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
