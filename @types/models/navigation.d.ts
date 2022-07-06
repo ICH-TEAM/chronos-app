@@ -14,7 +14,8 @@ declare global {
     Modal: undefined
     NotFound: undefined
     StepOne: undefined
-    StepScholl: undefined
+    StepSchooll: undefined
+    StepCourse: undefined
   }
 
   type RootStackScreenProps<Screen extends keyof RootStackParamList> =
@@ -25,7 +26,8 @@ declare global {
     SignIn: undefined
     SignUp: undefined
     StepOne: undefined
-    StepScholl: undefined
+    SelectSchooll: undefined
+    SelectCourse: undefined
   }
 
   type RootTabScreenProps<Screen extends keyof RootTabParamList> =

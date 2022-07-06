@@ -23,9 +23,14 @@ const linking: LinkingOptions<RootStackParamList> = {
               StepOne: "tres",
             },
           },
-          StepScholl: {
+          SelectSchooll: {
             screens: {
-              StepScholl: "cuatro",
+              SelectSchooll: "cuatro",
+            },
+          },
+          SelectCourse: {
+            screens: {
+              SelectCourse: "cuatro",
             },
           },
         },
