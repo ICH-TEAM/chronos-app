@@ -4,10 +4,10 @@ import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 
 
 interface InputProps {
-    value: string;
+    value?: string;
     type: 'default' | 'numeric';
     maxlength?: number;
-    placeholder?: string;
+    placeholder: string;
     placeholderTextColor?: string;
     editable?: boolean;
     onChangeText?: (value: string) => void;
@@ -38,8 +38,11 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor:"#e7e7e7",
         margin: 10,
+        padding: 10,
+        paddingLeft: 20,
         borderWidth: 1,
-        height: 50
+        height: 50,
+        width: 200,
     },
 });
 
