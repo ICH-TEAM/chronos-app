@@ -12,7 +12,7 @@ import Colors from "../constants/Colors"
 import useColorScheme from "../hooks/useColorScheme"
 import ModalScreen from "../screens/ModalScreen"
 import NotFoundScreen from "../screens/NotFoundScreen"
-import { Home, SignIn, SignUp } from "../screens"
+import { Home, SignIn, SignUp, StepOne } from "../screens"
 import LinkingConfiguration from "./LinkingConfiguration"
 import { Icon } from "../components"
 
@@ -52,6 +52,14 @@ function BottomTabNavigator() {
         component={SignUp}
         options={{
           title: "Sign Up",
+          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="StepOne"
+        component={StepOne}
+        options={{
+          title: "Step One",
           tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
         }}
       />

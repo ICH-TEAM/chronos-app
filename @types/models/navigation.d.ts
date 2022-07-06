@@ -13,6 +13,7 @@ declare global {
     Root: NavigatorScreenParams<RootTabParamList> | undefined
     Modal: undefined
     NotFound: undefined
+    StepOne: undefined
   }
 
   type RootStackScreenProps<Screen extends keyof RootStackParamList> =
