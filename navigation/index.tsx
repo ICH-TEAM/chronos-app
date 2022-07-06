@@ -12,7 +12,7 @@ import Colors from "../constants/Colors"
 import useColorScheme from "../hooks/useColorScheme"
 import ModalScreen from "../screens/ModalScreen"
 import NotFoundScreen from "../screens/NotFoundScreen"
-import { Home, SignIn } from "../screens"
+import { Home, SignIn, SignUp } from "../screens"
 import LinkingConfiguration from "./LinkingConfiguration"
 import { Icon } from "../components"
 
@@ -36,8 +36,7 @@ function BottomTabNavigator() {
         component={Home}
         options={({ navigation }: RootTabScreenProps<"Home">) => ({
           title: "Home",
-          // tabBarAccessibilityLabel: false,
-          tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Icon name="home" color={color} />,
         })}
       />
       <BottomTab.Screen
@@ -48,14 +47,14 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
         }}
       />
-      {/* <BottomTab.Screen
+      <BottomTab.Screen
         name="SignUp"
         component={SignUp}
         options={{
-          title: "Sign In",
+          title: "Sign Up",
           tabBarIcon: ({ color }) => <Icon name="code" color={color} />,
         }}
-      /> */}
+      />
     </BottomTab.Navigator>
   )
 }
