@@ -13,7 +13,7 @@ const linking: LinkingOptions<RootStackParamList> = {
               Home: "one",
             },
           },
-          TabTwo: {
+          SignIn: {
             screens: {
               SignIn: "two",
             },
