@@ -2,7 +2,7 @@ import React from 'react'
 import {ScrollView, useColorScheme, View} from 'react-native'
 
 import {Colors} from 'react-native/Libraries/NewAppScreen'
-import {SignIn} from './screens'
+import {Home, SignIn, SignUp} from './screens'
 
 const IndexApp = () => {
   const isDarkMode = useColorScheme() === 'dark'
@@ -18,7 +18,7 @@ const IndexApp = () => {
         style={{
           backgroundColor: isDarkMode ? Colors.black : Colors.white,
         }}>
-        <SignIn />
+        <Home />
       </View>
     </ScrollView>
   )
