@@ -1,6 +1,5 @@
-import {Section} from './components'
 import React from 'react'
-import {ScrollView, useColorScheme, View} from 'react-native'
+import {ScrollView, Text, useColorScheme, View} from 'react-native'
 
 import {Colors} from 'react-native/Libraries/NewAppScreen'
 
@@ -18,7 +17,7 @@ const IndexApp = () => {
         style={{
           backgroundColor: isDarkMode ? Colors.black : Colors.white,
         }}>
-        <Section title="Step One" />
+        <Text>Hola Mundo</Text>
       </View>
     </ScrollView>
   )
