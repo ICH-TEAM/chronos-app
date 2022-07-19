@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from 'react'
 import Svg, {
   G,
   Path,
@@ -6,16 +6,15 @@ import Svg, {
   LinearGradient,
   Stop,
   ClipPath,
-} from "react-native-svg"
-const Logo = (props) => {
+} from 'react-native-svg'
+const Logo = props => {
   return (
     <Svg
       width={159}
       height={111}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+      {...props}>
       <G clipPath="url(#a)">
         <Path
           d="M90.89 2.806a31.696 31.696 0 1 1 0 63.392 31.696 31.696 0 0 1 0-63.392m0 7.923a23.771 23.771 0 1 0 0 47.543 23.771 23.771 0 0 0 0-47.543Zm-3.962 7.924h5.943v14.976l9.231 9.231-4.2 4.2-10.974-10.975V18.653ZM39.386 58.272a3.962 3.962 0 1 1 0-7.924h15.173c1.229 2.813 2.813 5.467 4.636 7.924h-19.81Zm3.961-19.81a3.962 3.962 0 0 1 0-7.923h8.122l-.198 3.962.198 3.961h-8.122Zm3.962-19.809a3.962 3.962 0 1 1 0-7.924h11.886c-1.823 2.457-3.407 5.111-4.636 7.924h-7.25Z"
@@ -33,8 +32,7 @@ const Logo = (props) => {
           y1={36.918}
           x2={124.331}
           y2={37.321}
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <Stop stopColor="#8572FF" />
           <Stop offset={1} stopColor="#5B41FF" />
         </LinearGradient>
@@ -44,8 +42,7 @@ const Logo = (props) => {
           y1={99.499}
           x2={160.425}
           y2={96.462}
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <Stop stopColor="#8572FF" />
           <Stop offset={1} stopColor="#5B41FF" />
         </LinearGradient>

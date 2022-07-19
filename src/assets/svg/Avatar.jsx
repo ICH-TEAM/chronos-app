@@ -1,16 +1,15 @@
-import * as React from "react"
-import Svg, { G, Rect, Path, Defs, ClipPath } from "react-native-svg"
+import React from 'react'
+import Svg, {G, Rect, Path, Defs, ClipPath} from 'react-native-svg'
 
-const Avatar = (props) => {
-  if (props.gender === "male") {
+const Avatar = props => {
+  if (props.gender === 'male') {
     return (
       <Svg
         width={90}
         height={91}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        {...props}
-      >
+        {...props}>
         <G clipPath="url(#a)">
           <Rect y={0.5} width={90} height={90} rx={43.714} fill="#fff" />
           <G clipPath="url(#b)">
@@ -90,8 +89,7 @@ const Avatar = (props) => {
       height={91}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+      {...props}>
       <G clipPath="url(#a)">
         <Path d="M90 .5H0v90h90V.5Z" fill="#DF714E" />
         <Path
