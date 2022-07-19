@@ -1,7 +1,10 @@
-import React from 'react'
-import Svg, {G, Rect, Path, Defs, ClipPath} from 'react-native-svg'
+import React, {FC} from 'react'
+import Svg, {G, Rect, Path, Defs, ClipPath, SvgProps} from 'react-native-svg'
 
-const Avatar = props => {
+interface AvatarProps extends SvgProps {
+  gender: string
+}
+const Avatar: FC<AvatarProps> = props => {
   if (props.gender === 'male') {
     return (
       <Svg

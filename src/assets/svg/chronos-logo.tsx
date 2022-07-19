@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {FC} from 'react'
 import Svg, {
   G,
   Path,
@@ -6,8 +6,9 @@ import Svg, {
   LinearGradient,
   Stop,
   ClipPath,
+  SvgProps,
 } from 'react-native-svg'
-const Logo = props => {
+const Logo: FC<SvgProps> = props => {
   return (
     <Svg
       width={159}
