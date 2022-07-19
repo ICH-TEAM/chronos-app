@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Separator, Input, CheckBox} from '../../components'
+import {Button, Separator, Input} from '../../components'
 import {Text, View, StyleSheet} from 'react-native'
 import {useState} from 'react'
 
@@ -26,7 +26,6 @@ const Settings = () => {
         <Input placeholder="Alert" keyboardType="number-pad" />
         <Separator value={gap} />
         <View style={styles.itemText}>
-          <CheckBox value={isSelected} />
           <Text>Lector de Voz</Text>
         </View>
         <Separator value={gap} />
