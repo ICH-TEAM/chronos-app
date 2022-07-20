@@ -1,6 +1,7 @@
 import React from 'react'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Home, Settings} from './../screens'
+
 // import Courses from 'src/screens/Courses'
 
 const Tab = createBottomTabNavigator<RootStackParamList>()
