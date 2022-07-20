@@ -6,10 +6,10 @@ import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory'
 
 const Tab = createBottomTabNavigator<RootStackParamList>()
 
-const TabNavigation = (props: any) => {
+const TabNavigation = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} props={props.userData} />
+      <Tab.Screen name="Home" component={Home} />
       {/* <Tab.Screen name="Settings" component={Settings} /> */}
     </Tab.Navigator>
   )

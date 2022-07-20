@@ -14,7 +14,7 @@ const App = () => {
   console.log(userData)
   return (
     <NavigationContainer>
-      <TabNavigation props={userData} />
+      <TabNavigation />
     </NavigationContainer>
   )
 }
