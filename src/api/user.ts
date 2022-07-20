@@ -1,10 +1,10 @@
-import axios, {AxiosRequestConfig} from 'axios'
-import {ApiResponseSimba, Auth, AuthResponseData} from 'src/@types/models'
+import axios, {AxiosResponse} from 'axios'
+import {ApiResponseSimba, Auth, AuthResponseData} from '../@types/models/user'
 
 type AuthResponse = ApiResponseSimba<AuthResponseData>
 
 export const ApiLogin = () => {
-  const auth = (args: Auth): Promise<AxiosRequestConfig<AuthResponse>> => {
+  const auth = (args: Auth): Promise<AxiosResponse<AuthResponse>> => {
     const data = {
       args: {
         ...args,

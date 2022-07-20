@@ -1,4 +1,4 @@
-import {AuthResponseData} from 'src/@types/models'
+import {AuthResponseData} from '../@types/models/user'
 import {ActionType} from './types'
 
 type AuthUser = {

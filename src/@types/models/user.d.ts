@@ -5,7 +5,7 @@ export interface Auth {
 
 export interface ApiResponseSimba<T> {
   error: boolean
-  data: T
+  message: T
 }
 
 export interface AuthResponseData {

@@ -2,6 +2,8 @@ import React, {FC, useState} from 'react'
 import Logo from './../../assets/svg/chronos-logo'
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
 import {Input, Button, Separator} from '../../components'
+import {useDispatch} from 'react-redux'
+import {authService} from '../../services/auth'
 const gap = 30
 
 interface SigInProps {
@@ -11,10 +13,13 @@ const SignIn: FC<SigInProps> = props => {
   const {changeScreen} = props
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
+  const service = authService(dispatch)
   const signIn = () => {
     console.log('\n\nCredentials')
     console.log(email)
     console.log(password)
+    service.auth({email, password})
   }
   return (
     <View style={styles.container}>

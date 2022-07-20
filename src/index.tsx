@@ -2,7 +2,9 @@ import React from 'react'
 import {ScrollView, useColorScheme, View} from 'react-native'
 
 import {Colors} from 'react-native/Libraries/NewAppScreen'
+import {Provider} from 'react-redux'
 import {LogIn} from './screens'
+import {store} from './store'
 
 const IndexApp = () => {
   const isDarkMode = useColorScheme() === 'dark'
@@ -11,16 +13,18 @@ const IndexApp = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   }
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      style={backgroundStyle}>
-      <View
-        style={{
-          backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        }}>
-        <LogIn />
-      </View>
-    </ScrollView>
+    <Provider store={store}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          }}>
+          <LogIn />
+        </View>
+      </ScrollView>
+    </Provider>
   )
 }
 
