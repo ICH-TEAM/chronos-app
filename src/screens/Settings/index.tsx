@@ -1,12 +1,18 @@
-import React from 'react'
-import {Button, Separator, Input} from '../../components'
+import React, {useState} from 'react'
+import {Button, Separator, Input, Navbar} from '../../components'
 import {Text, View, StyleSheet} from 'react-native'
-import {useState} from 'react'
+import Icon from 'react-native-vector-icons/Ionicons'
+import Checkbox from '@react-native-community/checkbox'
 
 const gap = 25
+const Micro = (
+  <Icon name="mic-outline" size={25} color="black" onPress={() => {}} />
+)
+const MicroSlash = (
+  <Icon name="mic-off-outline" size={25} color="black" onPress={() => {}} />
+)
 const Settings = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isSelected, setSelection] = useState(false)
+  const [isSelected, setSelection] = useState(true)
 
   return (
     <View style={styles.container}>
@@ -26,7 +32,20 @@ const Settings = () => {
         <Input placeholder="Alert" keyboardType="number-pad" />
         <Separator value={gap} />
         <View style={styles.itemText}>
-          <Text>Lector de Voz</Text>
+          <Checkbox
+            value={isSelected}
+            disabled={false}
+            onValueChange={() => {
+              if (isSelected) {
+                setSelection(false)
+              } else {
+                setSelection(true)
+              }
+            }}
+            tintColor="#C14C4E"
+          />
+          {isSelected ? Micro : MicroSlash}
+          <Text> Lector de Voz</Text>
         </View>
         <Separator value={gap} />
         <Separator value={gap} />
@@ -37,7 +56,8 @@ const Settings = () => {
         </View>
         <Separator value={gap} />
       </View>
-      <Separator value={gap} />
+      {/* <Separator value={gap} /> */}
+      <Navbar />
     </View>
   )
 }
