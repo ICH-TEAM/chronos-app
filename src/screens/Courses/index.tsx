@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Text, View, ScrollView, StyleSheet} from 'react-native'
+import {Text, View, ScrollView, StyleSheet, FlatList} from 'react-native'
 import {Separator, CardCourse} from '../../components'
 
 interface time {
@@ -18,8 +18,6 @@ interface info {
   faculty: string
   name: string
   sections: section[]
-  //   createdAt: Date
-  //   updatedAt: Date
   id: string
 }
 const sections = {
@@ -59,29 +57,32 @@ const data: info[] = [
     id: '62c5cec3ca468fa02347220c',
   },
 ]
+
 const Courses = () => {
   const gap = 15
-  let loading = true
-  const cursosInfo = data.map((res: info) => {
-    loading = false
-    const time =
-      res.sections[0].times[0].from +
-      ':00 - ' +
-      res.sections[0].times[0].to +
-      ':00 '
-    return (
-      <>
-        <CardCourse
-          title={res.name}
-          code={res.code}
-          time={time}
-          onPress={() => {}}
-          index={Math.floor(Math.random() * 3)}
-        />
-        <Separator value={gap} />
-      </>
-    )
-  })
+  let loading = false
+  const cursosInfo = (
+    <FlatList
+      data={data}
+      renderItem={dato => (
+        <>
+          <CardCourse
+            title={dato.item.name}
+            code={dato.item.code}
+            time={
+              dato.item.sections[0].times[0].from +
+              '00 - ' +
+              dato.item.sections[0].times[0].to +
+              ':00 '
+            }
+            onPress={() => {}}
+            index={Math.floor(Math.random() * 3)}
+          />
+          <Separator value={gap} />
+        </>
+      )}
+    />
+  )
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -91,8 +92,9 @@ const Courses = () => {
           <Text style={styles.title2}>Editar</Text>
         </View>
         <View style={styles.coursesList}>
-          {loading ? <Text>Loading...</Text> : cursosInfo}
-          {/* {ViewCursos? ViewCursos : loggding} */}
+          <ScrollView horizontal={true}>
+            {loading ? <Text>Loading...</Text> : cursosInfo}
+          </ScrollView>
         </View>
       </View>
     </ScrollView>

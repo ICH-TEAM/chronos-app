@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 15,
     height: 175,
-    width: '100%',
+    width: 365,
   },
   information: {
     display: 'flex',
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 })
-const StepItem: FC<ButProps> = ButProps => {
+const CardCourse: FC<ButProps> = ButProps => {
   const {title, code, time, onPress, index} = ButProps
 
   return (
@@ -64,4 +64,4 @@ const StepItem: FC<ButProps> = ButProps => {
   )
 }
 
-export default StepItem
+export default CardCourse

@@ -1,74 +1,73 @@
 import * as React from 'react'
-import {Text, View, StyleSheet} from 'react-native'
+import {Text, View, StyleSheet, FlatList, ScrollView} from 'react-native'
 import {Separator, Input} from '../../components'
 
-const data = [
-  {
-    code: 'CC451',
-    career: 'Ciencias de la computacion',
-    faculty: 'Facultad de ciencias',
-    name: 'Interacción Humano-Computador',
-    teacher: 'Ciro Nunez',
-    id: '62c5d20488525d976c427a10',
-    times: [
-      {
-        from: 10,
-        to: 12,
-        day: 1,
-      },
-      {
-        from: 12,
-        to: 15,
-        day: 1,
-      },
-    ],
-  },
-]
+const data = {
+  code: 'CC451',
+  career: 'Ciencias de la computacion',
+  faculty: 'Facultad de ciencias',
+  name: 'Interacción Humano-Computador',
+  teacher: 'Ciro Nunez',
+  id: '62c5d20488525d976c427a10',
+  times: [
+    {
+      from: 10,
+      to: 12,
+      day: 1,
+    },
+    {
+      from: 12,
+      to: 15,
+      day: 1,
+    },
+  ],
+}
 const Course = () => {
   const gap = 15
-  let loading = true
-  const cursosInfo = data.map(res => {
-    loading = false
-    return (
-      <View style={styles.coursesList}>
-        <Text style={styles.title}> {res.name}</Text>
-        <Text style={styles.textLabel}> Profesor</Text>
-        <Input
-          placeholder={res.teacher}
-          editable={false}
-          placeholderTextColor={'#000000'}
-        />
-        <Separator value={gap} />
-        <Text style={styles.textLabel}> Codigo del Curso</Text>
-        <Input
-          placeholder={res.code}
-          editable={false}
-          placeholderTextColor={'#000000'}
-        />
-        <Separator value={gap} />
-        <Text style={styles.textLabel}> Carrera</Text>
-        <Input
-          placeholder={res.career}
-          editable={false}
-          placeholderTextColor={'#000000'}
-        />
-        <Separator value={gap} />
-        <Text style={styles.textLabel}> Horario</Text>
-        {res.times.map(time => {
-          return (
+  let loading = false
+  const cursosInfo = (
+    <View style={styles.coursesList}>
+      <Text style={styles.title}> {data.name}</Text>
+      <Text style={styles.textLabel}> Profesor</Text>
+      <Input
+        placeholder={data.teacher}
+        editable={false}
+        placeholderTextColor={'#000000'}
+      />
+      <Separator value={gap} />
+      <Text style={styles.textLabel}> Codigo del Curso</Text>
+      <Input
+        placeholder={data.code}
+        editable={false}
+        placeholderTextColor={'#000000'}
+      />
+      <Separator value={gap} />
+      <Text style={styles.textLabel}> Carrera</Text>
+      <Input
+        placeholder={data.career}
+        editable={false}
+        placeholderTextColor={'#000000'}
+      />
+      <Separator value={gap} />
+      <Text style={styles.textLabel}> Horario</Text>
+      <ScrollView horizontal={true}>
+        <FlatList
+          data={data.times}
+          renderItem={({item}) => (
             <>
               <Input
-                placeholder={time.from + ':00 - ' + time.to + ':00 '}
+                placeholder={item.from + ':00 - ' + item.to + ':00 '}
                 editable={false}
                 placeholderTextColor={'#000000'}
               />
               <Separator value={gap} />
             </>
-          )
-        })}
-      </View>
-    )
-  })
+          )}
+        />
+      </ScrollView>
+    </View>
+  )
+
   return (
     <View style={styles.container}>
       {loading ? <Text>Loading...</Text> : cursosInfo}
