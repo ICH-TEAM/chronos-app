@@ -17,16 +17,17 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     borderRadius: 10,
-    padding: 20,
-    height: 200,
-    width: '100%',
+    padding: 10,
+    paddingLeft: 20,
+    paddingRight: 15,
+    height: 175,
+    width: 365,
   },
   information: {
     display: 'flex',
     alignItems: 'flex-start',
   },
   title: {
-    textAlign: 'center',
     fontWeight: '400',
     fontSize: 25,
     padding: 5,
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 })
-const StepItem: FC<ButProps> = ButProps => {
+const CardCourse: FC<ButProps> = ButProps => {
   const {title, code, time, onPress, index} = ButProps
 
   return (
@@ -63,4 +64,4 @@ const StepItem: FC<ButProps> = ButProps => {
   )
 }
 
-export default StepItem
+export default CardCourse
