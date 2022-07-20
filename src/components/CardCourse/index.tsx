@@ -17,8 +17,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     borderRadius: 10,
-    padding: 20,
-    height: 200,
+    padding: 10,
+    paddingLeft: 20,
+    paddingRight: 15,
+    height: 175,
     width: '100%',
   },
   information: {
@@ -26,7 +28,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   title: {
-    textAlign: 'center',
     fontWeight: '400',
     fontSize: 25,
     padding: 5,
