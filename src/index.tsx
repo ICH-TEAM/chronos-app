@@ -3,7 +3,7 @@ import {ScrollView, useColorScheme, View} from 'react-native'
 
 import {Colors} from 'react-native/Libraries/NewAppScreen'
 import {Provider} from 'react-redux'
-import {LogIn} from './screens'
+import App from './App'
 import {store} from './store'
 
 const IndexApp = () => {
@@ -21,7 +21,7 @@ const IndexApp = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <LogIn />
+          <App />
         </View>
       </ScrollView>
     </Provider>

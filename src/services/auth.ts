@@ -1,6 +1,6 @@
 // import {Alert} from 'react-native'
 import {Alert} from 'react-native'
-import {DispatchType, StatusCode} from '../@types/models/api'
+import {DispatchType} from '../@types/models/api'
 import {Auth} from '../@types/models/user'
 import {ActionType} from '../actions/types'
 import {ApiLogin} from '../api/user'
@@ -16,8 +16,6 @@ export const authService = (dispatch: DispatchType) => {
 
       const response = await appApi.auth(args)
       if (response.status === 200 || response.status === 201) {
-        console.log('response.data.message')
-        console.log(response.data.message)
         dispatch({
           type: ActionType.AUTH_USER_SUCCESS,
           payload: response.data.message,

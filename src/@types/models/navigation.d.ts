@@ -11,6 +11,7 @@ declare global {
   }
   type RootStackParamList = {
     Root: NavigatorScreenParams<RootTabParamList> | undefined
+    Home: undefined
     Modal: undefined
     NotFound: undefined
     StepOne: undefined

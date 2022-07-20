@@ -16,9 +16,6 @@ const SignIn: FC<SigInProps> = props => {
   const dispatch = useDispatch()
   const service = authService(dispatch)
   const signIn = () => {
-    console.log('\n\nCredentials')
-    console.log(email)
-    console.log(password)
     service.auth({email, password})
   }
   return (

@@ -1,11 +1,17 @@
+// import {BottomTabScreenProps} from '@react-navigation/bottom-tabs'
+// import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import React from 'react'
 import Avatar from '../../assets/svg/Avatar'
 import {View, ScrollView, StyleSheet, Text} from 'react-native'
 import {CardCourse, Separator} from '../../components'
+// import {
+//   CompositeScreenProps,
+//   NavigatorScreenParams,
+// } from '@react-navigation/native'
 
 const gap = 20
 
-const Home = () => {
+const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
   return (
     <ScrollView>
       <View style={styles.container}>
