@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {FC} from 'react'
 import Logo from './../../assets/svg/chronos-logo'
 import {
   Text,
@@ -13,8 +13,11 @@ import SelectDropdown from 'react-native-select-dropdown'
 const gap = 30
 
 const genders = ['Masculino', 'Femenino']
-
-const SignUp = () => {
+interface SigUpProps {
+  changeScreen(): void
+}
+const SignUp: FC<SigUpProps> = props => {
+  const {changeScreen} = props
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -53,9 +56,9 @@ const SignUp = () => {
           <Button label="Registrar" />
         </View>
         <View style={styles.textLogIn}>
-          <Text style={styles.textLogInColor}>¿Aún no tienes una cuenta?</Text>
-          <TouchableOpacity>
-            <Text style={styles.textLogInColor}>Regístrate</Text>
+          <Text style={styles.textLogInColor}>¿Ya tienes una cuenta?</Text>
+          <TouchableOpacity onPress={changeScreen}>
+            <Text style={styles.textLogInColor}>Inicia sesión</Text>
           </TouchableOpacity>
         </View>
       </View>
