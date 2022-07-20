@@ -2,15 +2,17 @@ import React, {FC} from 'react'
 import {View, StyleSheet} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-const Home = <Icon name="home" size={25} color="black" onPress={() => {}} />
+const Home = (
+  <Icon name="home-outline" size={25} color="black" onPress={() => {}} />
+)
 const Courses = (
-  <Icon name="library" size={25} color="black" onPress={() => {}} />
+  <Icon name="library-outline" size={25} color="black" onPress={() => {}} />
 )
 const Settings = (
-  <Icon name="md-settings" size={25} color="black" onPress={() => {}} />
+  <Icon name="md-settings-outline" size={25} color="black" onPress={() => {}} />
 )
 const News = (
-  <Icon name="newspaper" size={25} color="black" onPress={() => {}} />
+  <Icon name="newspaper-outline" size={25} color="black" onPress={() => {}} />
 )
 const Navbar: FC<any> = () => {
   return (
@@ -31,6 +33,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderRadius: 15,
     backgroundColor: '#EFF2F5',
+    // borderColor: '#ffffff',
+    overflow: 'hidden',
     // shadowOffset: {width: 300, height: 300},
     // shadowColor: 'black',
     // shadowOpacity: 10,
