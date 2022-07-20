@@ -12,6 +12,7 @@ import {CardCourse, Separator} from '../../components'
 const gap = 20
 
 const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
+  console.log(navigation)
   return (
     <ScrollView>
       <View style={styles.container}>
