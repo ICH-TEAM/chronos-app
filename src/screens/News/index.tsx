@@ -1,9 +1,9 @@
 import React from 'react'
 import {Separator} from '../../components'
-import {Text, View, StyleSheet} from 'react-native'
+import {Text, View, StyleSheet, Image} from 'react-native'
 import {useState} from 'react'
 
-const gap = 25
+const gap = 10
 const News = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selected, setSelected] = useState<string>('')
@@ -14,16 +14,18 @@ const News = () => {
         <Text style={styles.title}> Novedades</Text>
       </View>
       <View style={styles.itemsContainer}>
-        <View>
+        <View style={styles.itemQR}>
+          <Image source={require('./../../assets/images/qr.png')} />
           <Text> Yape</Text>
         </View>
-        <Separator value={gap} />
-        <View>
+        <View style={styles.itemQR}>
+          <Image source={require('./../../assets/images/qr.png')} />
           <Text> Plin</Text>
         </View>
       </View>
       <Text> Comedor Universitario Uni</Text>
       <Text> MENU DEL DIA VIERNES 01 DE JULIO 2022</Text>
+      <Image source={require('./../../assets/images/menu.png')} />
     </View>
   )
 }
@@ -53,12 +55,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
-    marginVertical: 30,
   },
   itemText: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  itemQR: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
   },
 })
 
