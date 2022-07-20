@@ -1,24 +1,41 @@
-import React from 'react'
+import React, {FC, useState} from 'react'
 import Logo from './../../assets/svg/chronos-logo'
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
 import {Input, Button, Separator} from '../../components'
 const gap = 30
-export default function SignIn() {
+
+interface SigInProps {
+  changeScreen(): void
+}
+const SignIn: FC<SigInProps> = props => {
+  const {changeScreen} = props
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const signIn = () => {
+    console.log('\n\nCredentials')
+    console.log(email)
+    console.log(password)
+  }
   return (
     <View style={styles.container}>
       <Logo />
       <Separator value={5} />
       <Text style={styles.title}>Iniciar Sesión</Text>
       <View style={styles.form}>
-        <Input placeholder="Correo" />
+        <Input onChangeText={setEmail} value={email} placeholder="Correo" />
         <Separator value={gap} />
-        <Input placeholder="Contraseña" secureTextEntry />
+        <Input
+          onChangeText={setPassword}
+          value={password}
+          placeholder="Contraseña"
+          secureTextEntry
+        />
         <Separator value={gap} />
-        <Button label="Ingresar" />
+        <Button onPress={signIn} label="Ingresar" />
       </View>
       <View style={styles.textLogIn}>
         <Text style={styles.textLogInColor}>¿Aún no tienes una cuenta?</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={changeScreen}>
           <Text style={styles.textLogInColor}>Regístrate</Text>
         </TouchableOpacity>
       </View>
@@ -57,3 +74,5 @@ const styles = StyleSheet.create({
     marginBottom: 100,
   },
 })
+
+export default SignIn
