@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC, useState} from 'react'
 import Logo from './../../assets/svg/chronos-logo'
 import {
   Text,
@@ -8,17 +8,27 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import {Input, Button, Separator} from '../../components'
-import SelectDropdown from 'react-native-select-dropdown'
+// import SelectDropdown from 'react-native-select-dropdown'
 
 const gap = 30
 
-const genders = ['Masculino', 'Femenino']
+// const genders = ['Masculino', 'Femenino']
 interface SigUpProps {
   changeScreen(): void
   changeStep: (value: number) => void
+  saveChanges: (value: Record<string, any>) => void
 }
 const SignUp: FC<SigUpProps> = props => {
-  const {changeScreen, changeStep} = props
+  const {changeScreen, changeStep, saveChanges} = props
+  const [name, setName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  // const [gender, setGender] = useState('')
+  const handleSaveData = () => {
+    saveChanges({name, lastName, email, password})
+    changeStep(1)
+  }
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -26,19 +36,26 @@ const SignUp: FC<SigUpProps> = props => {
         <Separator value={5} />
         <Text style={styles.title}>Crear Cuenta</Text>
         <View style={styles.form}>
-          <Input placeholder="Nombre" />
+          <Input placeholder="Nombre" onChangeText={setName} value={name} />
           <Separator value={gap} />
-          <Input placeholder="Apellidos" />
+          <Input
+            placeholder="Apellidos"
+            onChangeText={setLastName}
+            value={lastName}
+          />
           <Separator value={gap} />
-          <Input placeholder="Nombre" />
+          <Input placeholder="Correo" onChangeText={setEmail} value={email} />
           <Separator value={gap} />
-          <Input placeholder="Correo" />
-          <Separator value={gap} />
-          <Input placeholder="Contraseña" secureTextEntry />
+          <Input
+            placeholder="Contraseña"
+            secureTextEntry
+            onChangeText={setPassword}
+            value={password}
+          />
           <Separator value={gap} />
           <Input placeholder="Confirmar contraseña" secureTextEntry />
           <Separator value={gap} />
-          <SelectDropdown
+          {/* <SelectDropdown
             buttonStyle={styles.selectButton}
             buttonTextStyle={styles.selectText}
             data={genders}
@@ -52,9 +69,9 @@ const SignUp: FC<SigUpProps> = props => {
             rowTextForSelection={item => {
               return item
             }}
-          />
-          <Separator value={gap} />
-          <Button label="Registrar" />
+          /> */}
+          {/* <Separator value={gap} /> */}
+          <Button label="Registrar" onPress={handleSaveData} />
         </View>
         <View style={styles.textLogIn}>
           <Text style={styles.textLogInColor}>¿Ya tienes una cuenta?</Text>
