@@ -17,27 +17,32 @@ const News = (
 const Navbar: FC<any> = () => {
   return (
     <View style={styles.container}>
-      {Home}
-      {Courses}
-      {Settings}
-      {News}
+      <View style={styles.navigation}>
+        {Home}
+        {Courses}
+        {Settings}
+        {News}
+      </View>
     </View>
   )
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    backgroundColor: 'green',
+    position: 'absolute',
+    width: '100%',
+    alignItems: 'center',
+    bottom: 0,
+    left: 0,
+  },
+  navigation: {
+    borderRadius: 15,
+    width: '90%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderRadius: 15,
-    backgroundColor: '#EFF2F5',
-    // borderColor: '#ffffff',
-    overflow: 'hidden',
-    // shadowOffset: {width: 300, height: 300},
-    // shadowColor: 'black',
-    // shadowOpacity: 10,
+    backgroundColor: 'red',
   },
 })
 export default Navbar
