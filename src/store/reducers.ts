@@ -22,6 +22,25 @@ const reducer = (state = initialState, action: AppAction) => {
         loading: false,
         user: null,
       }
+
+    case ActionType.REGISTER_USER:
+      return {
+        ...state,
+        loading: true,
+        user: null,
+      }
+    case ActionType.REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
+      }
+    case ActionType.REGISTER_USER_ERROR:
+      return {
+        ...state,
+        loading: false,
+        user: null,
+      }
     default:
       return {
         ...state,

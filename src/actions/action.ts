@@ -13,5 +13,24 @@ type AuthUserSuccess = {
 type AuthUserError = {
   type: ActionType.AUTH_USER_ERROR
 }
+// - - - - - Registrar
+type RegisterUser = {
+  type: ActionType.REGISTER_USER
+}
 
-export type AppAction = AuthUser | AuthUserSuccess | AuthUserError
+type RegisterUserSuccess = {
+  type: ActionType.REGISTER_USER_SUCCESS
+  payload: AuthResponseData
+}
+
+type RegisterUserError = {
+  type: ActionType.REGISTER_USER_ERROR
+}
+
+export type AppAction =
+  | AuthUser
+  | AuthUserSuccess
+  | AuthUserError
+  | RegisterUser
+  | RegisterUserSuccess
+  | RegisterUserError

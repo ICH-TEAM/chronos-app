@@ -1,5 +1,10 @@
 import axios, {AxiosResponse} from 'axios'
-import {ApiResponseSimba, Auth, AuthResponseData} from '../@types/models/user'
+import {
+  ApiResponseSimba,
+  Auth,
+  AuthResponseData,
+  RegisterUser,
+} from '../@types/models/user'
 
 type AuthResponse = ApiResponseSimba<AuthResponseData>
 
@@ -22,5 +27,26 @@ export const ApiLogin = () => {
 
     return axios(config)
   }
-  return {auth}
+
+  const registerUser = (
+    args: RegisterUser,
+  ): Promise<AxiosResponse<AuthResponse>> => {
+    const data = {
+      args: {
+        ...args,
+      },
+    }
+
+    const config = {
+      method: 'post',
+      url: 'https://chronos-uni.herokuapp.com/api/users',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: data,
+    }
+
+    return axios(config)
+  }
+  return {auth, registerUser}
 }

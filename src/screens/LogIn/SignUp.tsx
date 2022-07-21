@@ -15,9 +15,10 @@ const gap = 30
 const genders = ['Masculino', 'Femenino']
 interface SigUpProps {
   changeScreen(): void
+  changeStep: (value: number) => void
 }
 const SignUp: FC<SigUpProps> = props => {
-  const {changeScreen} = props
+  const {changeScreen, changeStep} = props
   return (
     <ScrollView>
       <View style={styles.container}>

@@ -23,3 +23,35 @@ export interface AuthResponseData {
   }
   courses: string[]
 }
+
+// Register User
+export interface RegisterUser {
+  name: string
+  email: string
+  password: string
+  lastName: string
+  faculty: string
+  career: string
+  courses: string[]
+}
+
+export interface ApiResponseSimba<T> {
+  error: boolean
+  message: T
+}
+
+export interface AuthResponseData {
+  id: string
+  name: string
+  email: string
+  lastName: string
+  faculty: {
+    name: string
+    id: string
+  }
+  career: {
+    name: string
+    id: string
+  }
+  courses: string[]
+}
