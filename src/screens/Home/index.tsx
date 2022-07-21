@@ -17,7 +17,7 @@ const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
     console.log('\n\n\nTabNavigation')
   }, [])
   return (
-    <GeneralScreen>
+    <GeneralScreen navigation={navigation.navigate}>
       <View style={styles.container}>
         <View style={styles.userCard}>
           <Avatar gender="male" />

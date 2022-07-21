@@ -9,9 +9,6 @@ import {ScrollView} from 'react-native'
 const RootStack = createStackNavigator<RootStackParamList>()
 
 const TabNavigation = () => {
-  useEffect(() => {
-    console.log('\n\n\nTabNavigation')
-  }, [])
   return (
     <RootStack.Navigator initialRouteName="Home">
       <RootStack.Screen

@@ -25,6 +25,7 @@ declare global {
 
   type RootTabParamList = {
     Home: undefined
+    Settings: undefined
     SignIn: undefined
     SignUp: undefined
     StepOne: undefined

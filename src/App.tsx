@@ -3,15 +3,14 @@ import {useSelector} from 'react-redux'
 import {NavigationContainer} from '@react-navigation/native'
 import {AppState} from './store/state'
 import TabNavigation from './navigation'
+import {LogIn} from './screens'
 // import {SafeAreaProvider} from 'react-native-safe-area-context'
 
 const App = () => {
   const userData = useSelector((state: AppState) => state.user)
-  // if (!userData) {
-  //   return <LogIn />
-  // }
-  // console.log('\nuserData')
-  console.log(userData)
+  if (!userData) {
+    return <LogIn />
+  }
   return (
     <NavigationContainer>
       {/* <SafeAreaProvider> */}
