@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {Text, View, ScrollView, StyleSheet, FlatList} from 'react-native'
 import {Separator, CardCourse} from '../../components'
+import GeneralScreen from '../../layouts/GeneralScreen'
 
 interface time {
   from: number
@@ -58,7 +59,7 @@ const data: info[] = [
   },
 ]
 
-const Courses = () => {
+const Courses = ({navigation}: RootTabScreenProps<'Home'>) => {
   const gap = 15
   let loading = false
   const cursosInfo = (
@@ -84,20 +85,22 @@ const Courses = () => {
     />
   )
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.textTitle}>
-          <Text style={styles.title1}>Cursos</Text>
-          <Separator value2={250} />
-          <Text style={styles.title2}>Editar</Text>
+    <GeneralScreen navigation={navigation.navigate}>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.textTitle}>
+            <Text style={styles.title1}>Cursos</Text>
+            <Separator value2={250} />
+            <Text style={styles.title2}>Editar</Text>
+          </View>
+          <View style={styles.coursesList}>
+            <ScrollView horizontal={true}>
+              {loading ? <Text>Loading...</Text> : cursosInfo}
+            </ScrollView>
+          </View>
         </View>
-        <View style={styles.coursesList}>
-          <ScrollView horizontal={true}>
-            {loading ? <Text>Loading...</Text> : cursosInfo}
-          </ScrollView>
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </GeneralScreen>
   )
 }
 

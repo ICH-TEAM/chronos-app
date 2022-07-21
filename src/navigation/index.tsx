@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 // import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {Home, Settings} from './../screens'
+import {Home, Settings, News, Courses} from './../screens'
 import {createStackNavigator} from '@react-navigation/stack'
 import {ScrollView} from 'react-native'
 
@@ -19,6 +19,16 @@ const TabNavigation = () => {
       <RootStack.Screen
         name="Settings"
         component={Settings}
+        options={{headerShown: false}}
+      />
+      <RootStack.Screen
+        name="News"
+        component={News}
+        options={{headerShown: false}}
+      />
+      <RootStack.Screen
+        name="Courses"
+        component={Courses}
         options={{headerShown: false}}
       />
     </RootStack.Navigator>
