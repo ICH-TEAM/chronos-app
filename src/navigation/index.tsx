@@ -1,17 +1,30 @@
-import React from 'react'
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import React, {useEffect} from 'react'
+// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Home, Settings} from './../screens'
+import {createStackNavigator} from '@react-navigation/stack'
+import {ScrollView} from 'react-native'
 
 // import Courses from 'src/screens/Courses'
 
-const Tab = createBottomTabNavigator<RootStackParamList>()
+const RootStack = createStackNavigator<RootStackParamList>()
 
 const TabNavigation = () => {
+  useEffect(() => {
+    console.log('\n\n\nTabNavigation')
+  }, [])
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      {/* <Tab.Screen name="Settings" component={Settings} /> */}
-    </Tab.Navigator>
+    <RootStack.Navigator initialRouteName="Home">
+      <RootStack.Screen
+        name="Home"
+        component={Home}
+        options={{headerShown: false}}
+      />
+      <RootStack.Screen
+        name="Settings"
+        component={Settings}
+        options={{headerShown: false}}
+      />
+    </RootStack.Navigator>
   )
 }
 

@@ -1,9 +1,10 @@
 // import {BottomTabScreenProps} from '@react-navigation/bottom-tabs'
 // import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import React from 'react'
+import React, {useEffect} from 'react'
 import Avatar from '../../assets/svg/Avatar'
 import {View, ScrollView, StyleSheet, Text} from 'react-native'
-import {CardCourse, Separator} from '../../components'
+import {Button, CardCourse, Separator} from '../../components'
+import GeneralScreen from '../../layouts/GeneralScreen'
 // import {
 //   CompositeScreenProps,
 //   NavigatorScreenParams,
@@ -12,8 +13,11 @@ import {CardCourse, Separator} from '../../components'
 const gap = 20
 
 const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
+  useEffect(() => {
+    console.log('\n\n\nTabNavigation')
+  }, [])
   return (
-    <ScrollView>
+    <GeneralScreen>
       <View style={styles.container}>
         <View style={styles.userCard}>
           <Avatar gender="male" />
@@ -49,7 +53,7 @@ const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
           </View>
         </View>
       </View>
-    </ScrollView>
+    </GeneralScreen>
   )
 }
 
