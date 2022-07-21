@@ -24,7 +24,7 @@ const Navbar: FC<NavBarProps> = props => {
           size={25}
           color="black"
           onPress={() => {
-            navigate('Home')
+            navigate('Courses')
           }}
         />
         <Icon
@@ -40,7 +40,7 @@ const Navbar: FC<NavBarProps> = props => {
           size={25}
           color="black"
           onPress={() => {
-            navigate('Settings')
+            navigate('News')
           }}
         />
       </View>

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {Text, View, StyleSheet, FlatList, ScrollView} from 'react-native'
 import {Separator, Input} from '../../components'
+import GeneralScreen from '../../layouts/GeneralScreen'
 
 const data = {
   code: 'CC451',
@@ -22,7 +23,7 @@ const data = {
     },
   ],
 }
-const Course = () => {
+const Course = ({navigation}: RootTabScreenProps<'Home'>) => {
   const gap = 15
   let loading = false
   const cursosInfo = (
@@ -69,14 +70,16 @@ const Course = () => {
   )
 
   return (
-    <View style={styles.container}>
-      {loading ? <Text>Loading...</Text> : cursosInfo}
-      <Separator value={70} />
-      <View style={styles.textTitle}>
-        <Text style={styles.itemText}>Regresar</Text>
+    <GeneralScreen navigation={navigation.navigate}>
+      <View style={styles.container}>
+        {loading ? <Text>Loading...</Text> : cursosInfo}
+        <Separator value={70} />
+        <View style={styles.textTitle}>
+          <Text style={styles.itemText}>Regresar</Text>
+        </View>
+        <Separator value={35} />
       </View>
-      <Separator value={35} />
-    </View>
+    </GeneralScreen>
   )
 }
 

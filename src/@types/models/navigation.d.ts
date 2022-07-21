@@ -13,6 +13,8 @@ declare global {
     // Root: NavigatorScreenParams<RootTabParamList> | undefined
     Home: undefined
     Settings: undefined
+    Courses: undefined
+    News: undefined
     Modal: undefined
     NotFound: undefined
     StepOne: undefined
@@ -26,6 +28,8 @@ declare global {
   type RootTabParamList = {
     Home: undefined
     Settings: undefined
+    Courses: undefined
+    News: undefined
     SignIn: undefined
     SignUp: undefined
     StepOne: undefined

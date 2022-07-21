@@ -2,31 +2,34 @@ import React from 'react'
 import {Separator} from '../../components'
 import {Text, View, StyleSheet, Image} from 'react-native'
 import {useState} from 'react'
+import GeneralScreen from '../../layouts/GeneralScreen'
 
 const gap = 10
-const News = () => {
+const News = ({navigation}: RootTabScreenProps<'Home'>) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selected, setSelected] = useState<string>('')
 
   return (
-    <View style={styles.container}>
-      <View style={styles.textTitle}>
-        <Text style={styles.title}> Novedades</Text>
-      </View>
-      <View style={styles.itemsContainer}>
-        <View style={styles.itemQR}>
-          <Image source={require('./../../assets/images/qr.png')} />
-          <Text> Yape</Text>
+    <GeneralScreen navigation={navigation.navigate}>
+      <View style={styles.container}>
+        <View style={styles.textTitle}>
+          <Text style={styles.title}> Novedades</Text>
         </View>
-        <View style={styles.itemQR}>
-          <Image source={require('./../../assets/images/qr.png')} />
-          <Text> Plin</Text>
+        <View style={styles.itemsContainer}>
+          <View style={styles.itemQR}>
+            <Image source={require('./../../assets/images/qr.png')} />
+            <Text> Yape</Text>
+          </View>
+          <View style={styles.itemQR}>
+            <Image source={require('./../../assets/images/qr.png')} />
+            <Text> Plin</Text>
+          </View>
         </View>
+        <Text> Comedor Universitario Uni</Text>
+        <Text> MENU DEL DIA VIERNES 01 DE JULIO 2022</Text>
+        <Image source={require('./../../assets/images/menu.png')} />
       </View>
-      <Text> Comedor Universitario Uni</Text>
-      <Text> MENU DEL DIA VIERNES 01 DE JULIO 2022</Text>
-      <Image source={require('./../../assets/images/menu.png')} />
-    </View>
+    </GeneralScreen>
   )
 }
 
