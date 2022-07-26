@@ -1,4 +1,4 @@
-import {FacultiesResponseData} from 'src/@types/models'
+import {FacultiesResponseData, CourseIDResponseData} from 'src/@types/models'
 import {AuthResponseData} from '../@types/models/user'
 import {ActionType} from './types'
 
@@ -42,6 +42,20 @@ type GetAllFacultiesError = {
   type: ActionType.GET_ALL_FACULTIES_ERROR
 }
 
+// - - - - - obtener 1 curso
+type GetOneCourse = {
+  type: ActionType.GET_ONE_COURSE
+}
+
+type GetOneCourseSuccess = {
+  type: ActionType.GET_ONE_COURSE_SUCCESS
+  payload: CourseIDResponseData
+}
+
+type GetOneCourseError = {
+  type: ActionType.GET_ONE_COURSE_ERROR
+}
+
 export type AppAction =
   | AuthUser
   | AuthUserSuccess
@@ -52,3 +66,6 @@ export type AppAction =
   | GetAllFaculties
   | GetAllFacultiesSuccess
   | GetAllFacultiesError
+  | GetOneCourse
+  | GetOneCourseSuccess
+  | GetOneCourseError

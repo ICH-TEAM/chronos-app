@@ -5,6 +5,10 @@ import Avatar from '../../assets/svg/Avatar'
 import {View, ScrollView, StyleSheet, Text} from 'react-native'
 import {Button, CardCourse, Separator} from '../../components'
 import GeneralScreen from '../../layouts/GeneralScreen'
+
+import {getCourseService} from '../../services/getCourse'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppState} from '../../store/state'
 // import {
 //   CompositeScreenProps,
 //   NavigatorScreenParams,
@@ -13,6 +17,16 @@ import GeneralScreen from '../../layouts/GeneralScreen'
 const gap = 20
 
 const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
+  const {course, loading} = useSelector((state: AppState) => state)
+  const dispatch = useDispatch()
+  const services = getCourseService(dispatch)
+
+  useEffect(() => {
+    console.log('course Inicial: ' + JSON.stringify(course, 0, 2))
+    services.getOnecourse({id: '62c5ce15ca468fa02347220a'})
+    console.log('course Inicial: ' + JSON.stringify(course, 0, 2))
+  }, [])
+
   return (
     <GeneralScreen navigation={navigation.navigate}>
       <View style={styles.container}>
