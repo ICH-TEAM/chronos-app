@@ -15,7 +15,6 @@ export const getCourseService = (dispatch: DispatchType) => {
       })
 
       const response = await appApi.getOnecourse(args)
-      console.log('response: ' + JSON.stringify(response, 0, 2))
       if (response.status === 200 || response.status === 201) {
         dispatch({
           type: ActionType.GET_ONE_COURSE_SUCCESS,

@@ -1,7 +1,7 @@
 import axios, {AxiosResponse} from 'axios'
 import {CourseID, CourseIDResponseData} from '../@types/models'
 
-type getOneCurseResponse = ApiResponseSimba<any>
+type getOneCurseResponse = ApiResponseSimba<CourseIDResponseData>
 
 export const ApiLogin = () => {
   const getOnecourse = (
