@@ -9,6 +9,7 @@ import GeneralScreen from '../../layouts/GeneralScreen'
 import {getCourseService} from '../../services/getCourse'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppState} from '../../store/state'
+import {CourseID, CourseIDResponseData, Course} from 'src/@types/models'
 // import {
 //   CompositeScreenProps,
 //   NavigatorScreenParams,
@@ -16,29 +17,53 @@ import {AppState} from '../../store/state'
 
 const gap = 20
 
+// const listCourseInfo = (
+//   services: {
+//     getOnecourse: (args: CourseID) => Promise<void>
+//     getOnecourses: (args: CourseIDResponseData) => Promise<void>
+//   },
+//   id: string,
+//   course: CourseIDResponseData,
+// ) => {
+//   services.getOnecourse({id})
+//   console.log('Course ID:' + id)
+//   services.getOnecourses(course)
+// }
+
 const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
-  const {course, loading} = useSelector((state: AppState) => state)
+  const {user, course, loading} = useSelector((state: AppState) => state)
   const dispatch = useDispatch()
   const services = getCourseService(dispatch)
+  const listNameCourse = user?.courses.map(cour => {
+    return {id: cour.id}
+  }) || [{id: ''}]
 
-  useEffect(() => {
-    console.log('course Inicial: ' + JSON.stringify(course, 0, 2))
-    services.getOnecourse({id: '62c5ce15ca468fa02347220a'})
-    console.log('course Inicial: ' + JSON.stringify(course, 0, 2))
-  }, [])
+  //services.getOnecourse({id})
+  //services.getOnecourses(listNameCourse)
+  //listCourseInfo(services, listNameCourse.id, course)
 
+  // useEffect(() => {
+  //   listCourseInfo(services, listNameCourse.id, course)
+  // }, [course])
+
+  //console.log('Lista de cursos' + JSON.stringify(listNameCourse, 0, 2))
+
+  // console.log('user: ' + JSON.stringify(user, 0, 2))
+  // console.log('course: ' + JSON.stringify(course, 0, 2))
   return (
     <GeneralScreen navigation={navigation.navigate}>
       <View style={styles.container}>
         <View style={styles.userCard}>
           <Avatar gender="male" />
           <View style={styles.avatarInformation}>
-            <Text style={styles.avatarName}>Diego Salazar</Text>
-            <Text style={styles.avatarSchool}>C. de la Computacion</Text>
+            <Text style={styles.avatarName}>
+              {user?.name + ' ' + user?.lastName}
+            </Text>
+            <Text style={styles.avatarSchool}>{user?.career.name}</Text>
           </View>
         </View>
         <View style={styles.content}>
-          <Text style={styles.date}>Lunes, 03 de mayo</Text>
+          <Text style={styles.date}>{new Date(Date.now()).toDateString()}</Text>
           <Text style={styles.coursesListTitle}>Cursos en el día</Text>
           <View style={styles.coursesList}>
             <CardCourse
@@ -114,7 +139,7 @@ const styles = StyleSheet.create({
     padding: 25,
   },
   date: {
-    fontSize: 16,
+    fontSize: 23,
   },
   coursesListTitle: {
     fontSize: 25,

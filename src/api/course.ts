@@ -2,6 +2,7 @@ import axios, {AxiosResponse} from 'axios'
 import {CourseID, CourseIDResponseData} from '../@types/models'
 
 type getOneCurseResponse = ApiResponseSimba<CourseIDResponseData>
+type getAllCurseResponse = ApiResponseSimba<CourseIDResponseData[]>
 
 export const ApiLogin = () => {
   const getOnecourse = (
@@ -21,9 +22,21 @@ export const ApiLogin = () => {
         'Content-Type': 'application/json',
       },
     }
-    console.log('AxiosRequest: ' + JSON.stringify(config, null, 2))
+    //console.log('AxiosRequest: ' + JSON.stringify(config, null, 2))
 
     return axios(config)
   }
-  return {getOnecourse}
+  const getAllcourse = (): Promise<AxiosResponse<getAllCurseResponse>> => {
+    const config = {
+      method: 'get',
+      url: 'https://chronos-uni.herokuapp.com/api/course',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    //console.log('AxiosRequest: ' + JSON.stringify(config, null, 2))
+
+    return axios(config)
+  }
+  return {getOnecourse, getAllcourse}
 }

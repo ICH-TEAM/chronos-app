@@ -56,6 +56,34 @@ type GetOneCourseError = {
   type: ActionType.GET_ONE_COURSE_ERROR
 }
 
+// - - - - - Guardar la info de los cursos
+type GetOneCourses = {
+  type: ActionType.GET_ONE_COURSES
+}
+
+type GetOneCoursesSuccess = {
+  type: ActionType.GET_ONE_COURSES_SUCCESS
+  payload: CourseIDResponseData[]
+}
+
+type GetOneCoursesError = {
+  type: ActionType.GET_ONE_COURSES_ERROR
+}
+
+// - - - - - obtener los cursos
+type GetAllCourse = {
+  type: ActionType.GET_ALL_COURSE
+}
+
+type GetAllCourseSuccess = {
+  type: ActionType.GET_ALL_COURSE_SUCCESS
+  payload: CourseIDResponseData[]
+}
+
+type GetAllCourseError = {
+  type: ActionType.GET_ALL_COURSE_ERROR
+}
+
 export type AppAction =
   | AuthUser
   | AuthUserSuccess
@@ -69,3 +97,9 @@ export type AppAction =
   | GetOneCourse
   | GetOneCourseSuccess
   | GetOneCourseError
+  | GetOneCourses
+  | GetOneCoursesSuccess
+  | GetOneCoursesError
+  | GetAllCourse
+  | GetAllCourseSuccess
+  | GetAllCourseError

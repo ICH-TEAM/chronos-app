@@ -3,6 +3,11 @@ import {Text, View, ScrollView, StyleSheet, FlatList} from 'react-native'
 import {Separator, CardCourse} from '../../components'
 import GeneralScreen from '../../layouts/GeneralScreen'
 
+import {getCourseService} from '../../services/getCourse'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppState} from '../../store/state'
+//import {CourseID, CourseIDResponseData, Course} from 'src/@types/models'
+
 interface time {
   from: number
   to: number
@@ -32,7 +37,7 @@ const sections = {
     },
   ],
 }
-const data: info[] = [
+const data2: info[] = [
   {
     code: 'CC451',
     career: 'Ciencias de la computacion',
@@ -58,10 +63,27 @@ const data: info[] = [
     id: '62c5cec3ca468fa02347220c',
   },
 ]
-
+data2
 const Courses = ({navigation}: RootTabScreenProps<'Home'>) => {
+  const {user, courses, loading} = useSelector((state: AppState) => state)
+  const dispatch = useDispatch()
+  const services = getCourseService(dispatch)
+  services.getAllCourse()
+  const listIDCourse = user?.courses
+  //const data = courses?.filter(cour => cour)
+
+  const data = courses?.filter(cour => {
+    return (
+      listIDCourse
+        ?.map(cours => {
+          return cours?.id === cour.id
+        })
+        .reduce((acc, item) => acc || item, {}) && cour.id
+    )
+  })
+
   const gap = 15
-  let loading = false
+  //let loading = false
   const cursosInfo = (
     <FlatList
       data={data}
