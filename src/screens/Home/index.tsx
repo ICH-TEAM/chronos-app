@@ -2,14 +2,20 @@
 // import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import React, {useEffect} from 'react'
 import Avatar from '../../assets/svg/Avatar'
-import {View, ScrollView, StyleSheet, Text} from 'react-native'
-import {Button, CardCourse, Separator} from '../../components'
+import {View, StyleSheet, Text, FlatList, ScrollView} from 'react-native'
+import {CardCourse, Separator} from '../../components'
 import GeneralScreen from '../../layouts/GeneralScreen'
 
 import {getCourseService} from '../../services/getCourse'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppState} from '../../store/state'
-import {CourseID, CourseIDResponseData, Course} from 'src/@types/models'
+import {
+  CourseIDResponseData,
+  Course as typCourse,
+  ListCourse,
+} from 'src/@types/models'
+
+//import {listCurses} from './../Util'
 // import {
 //   CompositeScreenProps,
 //   NavigatorScreenParams,
@@ -17,39 +23,72 @@ import {CourseID, CourseIDResponseData, Course} from 'src/@types/models'
 
 const gap = 20
 
-// const listCourseInfo = (
-//   services: {
-//     getOnecourse: (args: CourseID) => Promise<void>
-//     getOnecourses: (args: CourseIDResponseData) => Promise<void>
-//   },
-//   id: string,
-//   course: CourseIDResponseData,
-// ) => {
-//   services.getOnecourse({id})
-//   console.log('Course ID:' + id)
-//   services.getOnecourses(course)
-// }
-
 const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
-  const {user, course, loading} = useSelector((state: AppState) => state)
+  const {user, courses, loading} = useSelector((state: AppState) => state)
   const dispatch = useDispatch()
   const services = getCourseService(dispatch)
-  const listNameCourse = user?.courses.map(cour => {
-    return {id: cour.id}
-  }) || [{id: ''}]
 
-  //services.getOnecourse({id})
-  //services.getOnecourses(listNameCourse)
-  //listCourseInfo(services, listNameCourse.id, course)
+  useEffect(() => {
+    services.getAllCourse()
+  }, [])
 
-  // useEffect(() => {
-  //   listCourseInfo(services, listNameCourse.id, course)
-  // }, [course])
+  const listCurse: ListCourse[] = []
+  const listCurses = () => {
+    const idcourses: typCourse[] | null | undefined = user?.courses
+    const listCurseInfo: CourseIDResponseData[] | null | undefined = []
+    courses?.map(arr1 => {
+      return idcourses?.map(arr2 => {
+        if (arr2.id === arr1.id) {
+          listCurseInfo.push(arr1)
+        }
+      })
+    })
+    listCurseInfo.map(arg => {
+      listCurse.push({
+        id: arg.id,
+        code: arg.code,
+        career: arg.career,
+        faculty: arg.faculty,
+        name: arg.name,
+        section: arg.sections[0].section,
+        time:
+          arg.sections[0].times[0].from +
+          ':00 - ' +
+          arg.sections[0].times[0].to +
+          ':00 ',
+        index: Math.floor(Math.random() * 3),
+        createdAt: arg.createdAt,
+        updatedAt: arg.updatedAt,
+      })
+    })
+  }
+  listCurses()
+  // if (user != null && courses != null) {
+  //   listCurse.concat(listCurses(user, courses))
+  // }
 
-  //console.log('Lista de cursos' + JSON.stringify(listNameCourse, 0, 2))
+  console.log('arrs: ' + JSON.stringify(listCurse, 0, 2))
 
-  // console.log('user: ' + JSON.stringify(user, 0, 2))
-  // console.log('course: ' + JSON.stringify(course, 0, 2))
+  const cursosInfo = (
+    <FlatList
+      data={listCurse}
+      renderItem={(dato: {item: any}) => (
+        <>
+          <CardCourse
+            title={dato.item.name}
+            code={dato.item.code}
+            time={dato.item.time}
+            onPress={() => {
+              navigation('Course')
+            }}
+            index={dato.item.index}
+          />
+          <Separator value={gap} />
+        </>
+      )}
+    />
+  )
+
   return (
     <GeneralScreen navigation={navigation.navigate}>
       <View style={styles.container}>
@@ -66,29 +105,13 @@ const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
           <Text style={styles.date}>{new Date(Date.now()).toDateString()}</Text>
           <Text style={styles.coursesListTitle}>Cursos en el día</Text>
           <View style={styles.coursesList}>
-            <CardCourse
-              title="Calculo diferencial"
-              code="C1FA3"
-              time="10:00 - 12:00"
-              index={0}
-            />
-            <Separator value={gap} />
-            <CardCourse
-              title="Calculo diferencial"
-              code="C1FA3"
-              time="10:00 - 12:00"
-              index={1}
-            />
-            <Separator value={gap} />
-            <CardCourse
-              title="Calculo diferencial"
-              code="C1FA3"
-              time="10:00 - 12:00"
-              index={2}
-            />
+            <ScrollView horizontal={true}>
+              {loading ? <Text>Loading...</Text> : cursosInfo}
+            </ScrollView>
           </View>
         </View>
       </View>
+      <Separator value={gap + 10} />
     </GeneralScreen>
   )
 }

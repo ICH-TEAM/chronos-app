@@ -26,6 +26,7 @@ export const ApiLogin = () => {
 
     return axios(config)
   }
+
   const getAllcourse = (): Promise<AxiosResponse<getAllCurseResponse>> => {
     const config = {
       method: 'get',

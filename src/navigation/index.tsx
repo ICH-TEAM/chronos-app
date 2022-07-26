@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 // import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {Home, Settings, News, Courses} from './../screens'
+import {Home, Settings, News, Courses, Course} from './../screens'
 import {createStackNavigator} from '@react-navigation/stack'
-import {ScrollView} from 'react-native'
 
 // import Courses from 'src/screens/Courses'
 
@@ -29,6 +28,11 @@ const TabNavigation = () => {
       <RootStack.Screen
         name="Courses"
         component={Courses}
+        options={{headerShown: false}}
+      />
+      <RootStack.Screen
+        name="Course"
+        component={Course}
         options={{headerShown: false}}
       />
     </RootStack.Navigator>

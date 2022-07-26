@@ -1,4 +1,8 @@
-import {FacultiesResponseData, CourseIDResponseData} from 'src/@types/models'
+import {
+  FacultiesResponseData,
+  CourseIDResponseData,
+  ListCourse,
+} from 'src/@types/models'
 import {AuthResponseData} from '../@types/models/user'
 import {ActionType} from './types'
 
@@ -57,17 +61,17 @@ type GetOneCourseError = {
 }
 
 // - - - - - Guardar la info de los cursos
-type GetOneCourses = {
-  type: ActionType.GET_ONE_COURSES
+type ListCourses = {
+  type: ActionType.LIST_COURSES
 }
 
-type GetOneCoursesSuccess = {
-  type: ActionType.GET_ONE_COURSES_SUCCESS
-  payload: CourseIDResponseData[]
+type ListCoursesReemplazed = {
+  type: ActionType.LIST_COURSES_REEMPLAZED
+  payload: ListCourse[]
 }
 
-type GetOneCoursesError = {
-  type: ActionType.GET_ONE_COURSES_ERROR
+type ListCoursesReset = {
+  type: ActionType.LIST_COURSES_RESET
 }
 
 // - - - - - obtener los cursos
@@ -97,9 +101,9 @@ export type AppAction =
   | GetOneCourse
   | GetOneCourseSuccess
   | GetOneCourseError
-  | GetOneCourses
-  | GetOneCoursesSuccess
-  | GetOneCoursesError
+  | ListCourses
+  | ListCoursesReemplazed
+  | ListCoursesReset
   | GetAllCourse
   | GetAllCourseSuccess
   | GetAllCourseError

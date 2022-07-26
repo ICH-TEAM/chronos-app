@@ -24,7 +24,7 @@ export interface AppState {
   faculties: FacultiesResponseData[] | null
   course: CourseIDResponseData | null
   courses: CourseIDResponseData[] | null
-  courseListInfo: CourseIDResponseData[] | []
+  courseListInfo: CourseIDResponseData[] | null
 }
 
 export const initialState: AppState = {
@@ -33,5 +33,5 @@ export const initialState: AppState = {
   faculties: null,
   course: null,
   courses: null,
-  courseListInfo: [],
+  courseListInfo: null,
 }

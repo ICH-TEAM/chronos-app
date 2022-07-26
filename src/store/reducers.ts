@@ -77,19 +77,19 @@ const reducer = (state = initialState, action: AppAction) => {
         loading: false,
         course: null,
       }
-    case ActionType.GET_ONE_COURSES:
+    case ActionType.LIST_COURSES:
       return {
         ...state,
         loading: true,
         courseListInfo: null,
       }
-    case ActionType.GET_ONE_COURSES_SUCCESS:
+    case ActionType.LIST_COURSES_REEMPLAZED:
       return {
         ...state,
         loading: false,
-        courseListInfo: [...state.courseListInfo, action.payload],
+        courseListInfo: action.payload,
       }
-    case ActionType.GET_ONE_COURSES_ERROR:
+    case ActionType.LIST_COURSES_RESET:
       return {
         ...state,
         loading: false,

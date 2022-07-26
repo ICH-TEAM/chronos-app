@@ -37,7 +37,7 @@ const sections = {
     },
   ],
 }
-const data2: info[] = [
+const data: info[] = [
   {
     code: 'CC451',
     career: 'Ciencias de la computacion',
@@ -63,7 +63,7 @@ const data2: info[] = [
     id: '62c5cec3ca468fa02347220c',
   },
 ]
-data2
+
 const Courses = ({navigation}: RootTabScreenProps<'Home'>) => {
   const {user, courses, loading} = useSelector((state: AppState) => state)
   const dispatch = useDispatch()
@@ -71,16 +71,6 @@ const Courses = ({navigation}: RootTabScreenProps<'Home'>) => {
   services.getAllCourse()
   const listIDCourse = user?.courses
   //const data = courses?.filter(cour => cour)
-
-  const data = courses?.filter(cour => {
-    return (
-      listIDCourse
-        ?.map(cours => {
-          return cours?.id === cour.id
-        })
-        .reduce((acc, item) => acc || item, {}) && cour.id
-    )
-  })
 
   const gap = 15
   //let loading = false
