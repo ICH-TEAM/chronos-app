@@ -17,7 +17,7 @@ declare global {
     News: undefined
     Modal: undefined
     NotFound: undefined
-    StepOne: undefined
+    SelectFaculties: undefined
     StepSchooll: undefined
     StepCourse: undefined
   }
@@ -32,7 +32,7 @@ declare global {
     News: undefined
     SignIn: undefined
     SignUp: undefined
-    StepOne: undefined
+    SelectFaculties: undefined
     SelectSchooll: undefined
     SelectCourse: undefined
   }

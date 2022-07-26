@@ -13,9 +13,6 @@ import GeneralScreen from '../../layouts/GeneralScreen'
 const gap = 20
 
 const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
-  useEffect(() => {
-    console.log('\n\n\nTabNavigation')
-  }, [])
   return (
     <GeneralScreen navigation={navigation.navigate}>
       <View style={styles.container}>

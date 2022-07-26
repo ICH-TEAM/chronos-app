@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import StepOne from './../Steps/StepOne'
+import SelectFaculties from '../Steps/SelectFaculties'
+import SelectSchool from '../Steps/SelectSchool'
 
 const LogIn = () => {
   const [isSignIn, setIsSignIn] = useState<boolean>(true)
@@ -28,7 +29,10 @@ const LogIn = () => {
         />
       )
     case 1:
-      return <StepOne />
+      return <SelectFaculties changeStep={changeStep} />
+
+    case 2:
+      return <SelectSchool changeStep={changeStep} />
     default:
       return (
         <SignUp

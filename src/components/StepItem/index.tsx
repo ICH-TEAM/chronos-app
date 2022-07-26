@@ -6,21 +6,22 @@ interface BtnStepProps extends TouchableOpacityProps {
   label: string
   selectedValue: string
   selectItem: (e: string) => void
+  itemID: string
 }
 
 const StepItem: FC<BtnStepProps> = props => {
-  const {label, selectedValue, selectItem, ...rest} = props
+  const {label, selectedValue, selectItem, itemID, ...rest} = props
   return (
-    <TouchableOpacity {...rest} onPress={() => selectItem(label)}>
+    <TouchableOpacity {...rest} onPress={() => selectItem(itemID)}>
       <View
         style={
-          selectedValue === label
+          selectedValue === itemID
             ? {...styles.btn, ...styles.btnColorSelected}
             : {...styles.btn, ...styles.btnColorDefault}
         }>
         <Text
           style={
-            selectedValue === label ? styles.textSelected : styles.textDefault
+            selectedValue === itemID ? styles.textSelected : styles.textDefault
           }>
           {label}
         </Text>

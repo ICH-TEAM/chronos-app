@@ -3,11 +3,6 @@ export interface Auth {
   password: string
 }
 
-export interface ApiResponseSimba<T> {
-  error: boolean
-  message: T
-}
-
 export interface AuthResponseData {
   id: string
   name: string
@@ -33,11 +28,6 @@ export interface RegisterUser {
   faculty: string
   career: string
   courses: string[]
-}
-
-export interface ApiResponseSimba<T> {
-  error: boolean
-  message: T
 }
 
 export interface AuthResponseData {

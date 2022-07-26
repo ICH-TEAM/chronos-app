@@ -1,9 +1,14 @@
 import {Button, Separator, StepItem} from '../../components'
 import {Text, View, StyleSheet} from 'react-native'
-import React, {useState} from 'react'
+import React, {FC, useState} from 'react'
 
 const gap = 25
-const SelectSchool = () => {
+
+interface SelectSchoolProps {
+  changeStep: (value: number) => void
+}
+const SelectSchool: FC<SelectSchoolProps> = props => {
+  const {changeStep} = props
   const [selected, setSelected] = useState<string>('')
 
   const selectItem = (value: string) => {
@@ -31,7 +36,12 @@ const SelectSchool = () => {
           selectItem={selectItem}
         />
       </View>
-      <Button label="Continuar" />
+      <Button
+        label="Continuar"
+        onPress={() => {
+          changeStep(1)
+        }}
+      />
     </View>
   )
 }

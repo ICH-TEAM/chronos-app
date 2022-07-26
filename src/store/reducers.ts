@@ -41,6 +41,24 @@ const reducer = (state = initialState, action: AppAction) => {
         loading: false,
         user: null,
       }
+    case ActionType.GET_ALL_FACULTIES:
+      return {
+        ...state,
+        loading: true,
+        faculties: null,
+      }
+    case ActionType.GET_ALL_FACULTIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        faculties: action.payload,
+      }
+    case ActionType.GET_ALL_FACULTIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        faculties: null,
+      }
     default:
       return {
         ...state,

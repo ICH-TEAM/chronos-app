@@ -1,10 +1,5 @@
 import axios, {AxiosResponse} from 'axios'
-import {
-  ApiResponseSimba,
-  Auth,
-  AuthResponseData,
-  RegisterUser,
-} from '../@types/models/user'
+import {Auth, AuthResponseData, RegisterUser} from '../@types/models/user'
 
 type AuthResponse = ApiResponseSimba<AuthResponseData>
 

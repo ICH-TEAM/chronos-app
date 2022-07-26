@@ -1,3 +1,4 @@
+import {FacultiesResponseData} from 'src/@types/models'
 import {AuthResponseData} from '../@types/models/user'
 import {ActionType} from './types'
 
@@ -27,6 +28,20 @@ type RegisterUserError = {
   type: ActionType.REGISTER_USER_ERROR
 }
 
+// - - - - - obtener facultades
+type GetAllFaculties = {
+  type: ActionType.GET_ALL_FACULTIES
+}
+
+type GetAllFacultiesSuccess = {
+  type: ActionType.GET_ALL_FACULTIES_SUCCESS
+  payload: FacultiesResponseData[]
+}
+
+type GetAllFacultiesError = {
+  type: ActionType.GET_ALL_FACULTIES_ERROR
+}
+
 export type AppAction =
   | AuthUser
   | AuthUserSuccess
@@ -34,3 +49,6 @@ export type AppAction =
   | RegisterUser
   | RegisterUserSuccess
   | RegisterUserError
+  | GetAllFaculties
+  | GetAllFacultiesSuccess
+  | GetAllFacultiesError

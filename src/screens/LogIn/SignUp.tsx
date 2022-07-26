@@ -55,22 +55,7 @@ const SignUp: FC<SigUpProps> = props => {
           <Separator value={gap} />
           <Input placeholder="Confirmar contraseña" secureTextEntry />
           <Separator value={gap} />
-          {/* <SelectDropdown
-            buttonStyle={styles.selectButton}
-            buttonTextStyle={styles.selectText}
-            data={genders}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index)
-            }}
-            defaultButtonText="Elije un género"
-            buttonTextAfterSelection={selectedItem => {
-              return selectedItem
-            }}
-            rowTextForSelection={item => {
-              return item
-            }}
-          /> */}
-          {/* <Separator value={gap} /> */}
+
           <Button label="Registrar" onPress={handleSaveData} />
         </View>
         <View style={styles.textLogIn}>
