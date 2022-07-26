@@ -7,3 +7,4 @@ declare global {
 
 export * from './user'
 export * from './faculties'
+export * from './course'
