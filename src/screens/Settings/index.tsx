@@ -54,7 +54,12 @@ const Settings = ({navigation}: RootTabScreenProps<'Home'>) => {
           <Button label="Guardar" />
           <Separator value={gap} />
           <View style={styles.itemText}>
-            <Text>Regresar</Text>
+            <Text
+              onPress={() => {
+                navigation.navigate('Home')
+              }}>
+              Regresar
+            </Text>
           </View>
           <Separator value={gap} />
         </View>

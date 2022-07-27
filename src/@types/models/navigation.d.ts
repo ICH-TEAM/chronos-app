@@ -14,6 +14,7 @@ declare global {
     Home: undefined
     Settings: undefined
     Courses: undefined
+    Course: undefined
     News: undefined
     Modal: undefined
     NotFound: undefined

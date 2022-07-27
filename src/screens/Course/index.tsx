@@ -1,31 +1,41 @@
 import * as React from 'react'
 import {Text, View, StyleSheet, FlatList, ScrollView} from 'react-native'
+import {AppState} from '../../store/state'
 import {Separator, Input} from '../../components'
 import GeneralScreen from '../../layouts/GeneralScreen'
+import {useSelector} from 'react-redux'
+import {ListCourse} from 'src/@types/models'
 
-const data = {
-  code: 'CC451',
-  career: 'Ciencias de la computacion',
-  faculty: 'Facultad de ciencias',
-  name: 'Interacción Humano-Computador',
-  teacher: 'Ciro Nunez',
-  id: '62c5d20488525d976c427a10',
-  times: [
-    {
-      from: 10,
-      to: 12,
-      day: 1,
-    },
-    {
-      from: 12,
-      to: 15,
-      day: 1,
-    },
-  ],
-}
 const Course = ({navigation}: RootTabScreenProps<'Home'>) => {
+  const {courses, courseID, loading} = useSelector((state: AppState) => state)
+  const cursosInf: ListCourse[] = []
+  courses?.map(arg => {
+    if (courseID === arg.id) {
+      cursosInf.push({
+        id: arg.id,
+        code: arg.code,
+        career: arg.career,
+        faculty: arg.faculty,
+        name: arg.name,
+        section: arg.sections[0].section,
+        teacher: arg.sections[0].times[0].teacher,
+        time:
+          arg.sections[0].times[0].from +
+          ':00 - ' +
+          arg.sections[0].times[0].to +
+          ':00 ',
+        times: arg.sections[0].times,
+        index: Math.floor(Math.random() * 3),
+        createdAt: arg.createdAt,
+        updatedAt: arg.updatedAt,
+      })
+    }
+  })
+
+  console.log(courseID)
   const gap = 15
-  let loading = false
+  const data = cursosInf[0]
+  const times = data.times
   const cursosInfo = (
     <View style={styles.coursesList}>
       <Text style={styles.title}> {data.name}</Text>
@@ -53,7 +63,7 @@ const Course = ({navigation}: RootTabScreenProps<'Home'>) => {
       <Text style={styles.textLabel}> Horario</Text>
       <ScrollView horizontal={true}>
         <FlatList
-          data={data.times}
+          data={times}
           renderItem={({item}) => (
             <>
               <Input
@@ -75,7 +85,13 @@ const Course = ({navigation}: RootTabScreenProps<'Home'>) => {
         {loading ? <Text>Loading...</Text> : cursosInfo}
         <Separator value={70} />
         <View style={styles.textTitle}>
-          <Text style={styles.itemText}>Regresar</Text>
+          <Text
+            style={styles.itemText}
+            onPress={() => {
+              navigation.navigate('Home')
+            }}>
+            Regresar
+          </Text>
         </View>
         <Separator value={35} />
       </View>

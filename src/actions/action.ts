@@ -1,4 +1,8 @@
-import {FacultiesResponseData, CourseIDResponseData} from 'src/@types/models'
+import {
+  FacultiesResponseData,
+  CourseIDResponseData,
+  ListCourse,
+} from 'src/@types/models'
 import {AuthResponseData} from '../@types/models/user'
 import {ActionType} from './types'
 
@@ -56,6 +60,48 @@ type GetOneCourseError = {
   type: ActionType.GET_ONE_COURSE_ERROR
 }
 
+// - - - - - obtener 1 curso
+type InfoCourseID = {
+  type: ActionType.COURSE_ID
+}
+
+type InfoCourseIDSuccess = {
+  type: ActionType.COURSE_ID_SUCCESS
+  payload: string
+}
+
+type InfoCourseIDError = {
+  type: ActionType.COURSE_ID_RESET
+}
+
+// - - - - - Guardar la info de los cursos
+type ListCourses = {
+  type: ActionType.LIST_COURSES
+}
+
+type ListCoursesReemplazed = {
+  type: ActionType.LIST_COURSES_REEMPLAZED
+  payload: ListCourse[]
+}
+
+type ListCoursesReset = {
+  type: ActionType.LIST_COURSES_RESET
+}
+
+// - - - - - obtener los cursos
+type GetAllCourse = {
+  type: ActionType.GET_ALL_COURSE
+}
+
+type GetAllCourseSuccess = {
+  type: ActionType.GET_ALL_COURSE_SUCCESS
+  payload: CourseIDResponseData[]
+}
+
+type GetAllCourseError = {
+  type: ActionType.GET_ALL_COURSE_ERROR
+}
+
 export type AppAction =
   | AuthUser
   | AuthUserSuccess
@@ -69,3 +115,12 @@ export type AppAction =
   | GetOneCourse
   | GetOneCourseSuccess
   | GetOneCourseError
+  | ListCourses
+  | ListCoursesReemplazed
+  | ListCoursesReset
+  | GetAllCourse
+  | GetAllCourseSuccess
+  | GetAllCourseError
+  | InfoCourseID
+  | InfoCourseIDSuccess
+  | InfoCourseIDError

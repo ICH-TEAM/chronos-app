@@ -21,3 +21,18 @@ export interface CourseIDResponseData {
   createdAt: string
   updatedAt: string
 }
+
+export interface ListCourse {
+  id: string
+  code: string
+  career: string
+  faculty: string
+  name: string
+  teacher: string
+  section: string
+  times?: Time[]
+  time: string
+  index: number
+  createdAt: string
+  updatedAt: string
+}

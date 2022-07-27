@@ -2,82 +2,127 @@ import * as React from 'react'
 import {Text, View, ScrollView, StyleSheet, FlatList} from 'react-native'
 import {Separator, CardCourse} from '../../components'
 import GeneralScreen from '../../layouts/GeneralScreen'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppState} from '../../store/state'
+import {
+  CourseIDResponseData,
+  ListCourse,
+  Course as typCourse,
+} from 'src/@types/models'
+import {getCourseService} from '../../services/getCourse'
+//import {CourseID, CourseIDResponseData, Course} from 'src/@types/models'
 
-interface time {
-  from: number
-  to: number
-  day: number
-  teacher: string
-}
-interface section {
-  section: string
-  times: time[]
-}
-interface info {
-  code: string
-  career: string
-  faculty: string
-  name: string
-  sections: section[]
-  id: string
-}
-const sections = {
-  section: 'A',
-  times: [
-    {
-      from: 10,
-      to: 12,
-      day: 1,
-      teacher: 'C. LARA',
-    },
-  ],
-}
-const data: info[] = [
-  {
-    code: 'CC451',
-    career: 'Ciencias de la computacion',
-    faculty: 'Facultad de ciencias',
-    name: 'Interacción Humano-Computador',
-    sections: [sections],
-    id: '62c5d20488525d976c427a10',
-  },
-  {
-    code: 'CC3S2',
-    career: 'Ciencias de la computacion',
-    faculty: 'Facultad de ciencias',
-    name: 'DESARROLLO DE SOFTWARE',
-    sections: [sections],
-    id: '62c5ce15ca468fa02347220a',
-  },
-  {
-    code: 'CC411',
-    career: 'Ciencias de la computacion',
-    faculty: 'Facultad de ciencias',
-    name: 'SEGURIDAD EN SISTEMAS INFORMATICOS',
-    sections: [sections],
-    id: '62c5cec3ca468fa02347220c',
-  },
-]
+// interface time {
+//   from: number
+//   to: number
+//   day: number
+//   teacher: string
+// }
+// interface section {
+//   section: string
+//   times: time[]
+// }
+// interface info {
+//   code: string
+//   career: string
+//   faculty: string
+//   name: string
+//   sections: section[]
+//   id: string
+// }
+// const sections = {
+//   section: 'A',
+//   times: [
+//     {
+//       from: 10,
+//       to: 12,
+//       day: 1,
+//       teacher: 'C. LARA',
+//     },
+//   ],
+// }
+// const data: info[] = [
+//   {
+//     code: 'CC451',
+//     career: 'Ciencias de la computacion',
+//     faculty: 'Facultad de ciencias',
+//     name: 'Interacción Humano-Computador',
+//     sections: [sections],
+//     id: '62c5d20488525d976c427a10',
+//   },
+//   {
+//     code: 'CC3S2',
+//     career: 'Ciencias de la computacion',
+//     faculty: 'Facultad de ciencias',
+//     name: 'DESARROLLO DE SOFTWARE',
+//     sections: [sections],
+//     id: '62c5ce15ca468fa02347220a',
+//   },
+//   {
+//     code: 'CC411',
+//     career: 'Ciencias de la computacion',
+//     faculty: 'Facultad de ciencias',
+//     name: 'SEGURIDAD EN SISTEMAS INFORMATICOS',
+//     sections: [sections],
+//     id: '62c5cec3ca468fa02347220c',
+//   },
+// ]
 
 const Courses = ({navigation}: RootTabScreenProps<'Home'>) => {
+  const {user, courses, loading} = useSelector((state: AppState) => state)
+  const dispatch = useDispatch()
+  const services = getCourseService(dispatch)
+
+  const listCurse: ListCourse[] = []
+  const listCurses = () => {
+    const idcourses: typCourse[] | null | undefined = user?.courses
+    const listCurseInfo: CourseIDResponseData[] | null | undefined = []
+    courses?.map(arr1 => {
+      return idcourses?.map(arr2 => {
+        if (arr2.id === arr1.id) {
+          listCurseInfo.push(arr1)
+        }
+      })
+    })
+    listCurseInfo.map(arg => {
+      listCurse.push({
+        id: arg.id,
+        code: arg.code,
+        career: arg.career,
+        faculty: arg.faculty,
+        name: arg.name,
+        section: arg.sections[0].section,
+        teacher: arg.sections[0].times[0].teacher,
+        time:
+          arg.sections[0].times[0].from +
+          ':00 - ' +
+          arg.sections[0].times[0].to +
+          ':00 ',
+        index: Math.floor(Math.random() * 3),
+        createdAt: arg.createdAt,
+        updatedAt: arg.updatedAt,
+      })
+    })
+  }
+
+  listCurses()
+
   const gap = 15
-  let loading = false
+  //let loading = false
   const cursosInfo = (
     <FlatList
-      data={data}
+      data={listCurse}
       renderItem={dato => (
         <>
           <CardCourse
             title={dato.item.name}
             code={dato.item.code}
-            time={
-              dato.item.sections[0].times[0].from +
-              '00 - ' +
-              dato.item.sections[0].times[0].to +
-              ':00 '
-            }
-            onPress={() => {}}
-            index={Math.floor(Math.random() * 3)}
+            time={dato.item.time}
+            onPress={() => {
+              services.courseID(dato.item.id)
+              navigation.navigate('Course')
+            }}
+            index={dato.index}
           />
           <Separator value={gap} />
         </>
