@@ -113,6 +113,24 @@ const reducer = (state = initialState, action: AppAction) => {
         loading: false,
         courses: null,
       }
+    case ActionType.COURSE_ID:
+      return {
+        ...state,
+        loading: true,
+        courseID: null,
+      }
+    case ActionType.COURSE_ID_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        courseID: action.payload,
+      }
+    case ActionType.COURSE_ID_RESET:
+      return {
+        ...state,
+        loading: false,
+        courseID: null,
+      }
     default:
       return {
         ...state,

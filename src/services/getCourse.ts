@@ -44,6 +44,32 @@ export const getCourseService = (dispatch: DispatchType) => {
     }
   }
 
+  const courseID = (args: string) => {
+    try {
+      dispatch({
+        type: ActionType.COURSE_ID,
+      })
+      dispatch({
+        type: ActionType.COURSE_ID_SUCCESS,
+        payload: args,
+      })
+    } catch (err) {
+      console.log('Errors')
+      console.log(err)
+      Alert.alert('Hubo un error en Get one course', 'Intentalo de nuevo', [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ])
+      dispatch({
+        type: ActionType.COURSE_ID_RESET,
+      })
+    }
+  }
+
   const listCourse = async (args: CourseIDResponseData[]) => {
     try {
       dispatch({
@@ -60,6 +86,7 @@ export const getCourseService = (dispatch: DispatchType) => {
           faculty: arg.faculty,
           name: arg.name,
           section: arg.sections[0].section,
+          teacher: arg.sections[0].times[0].teacher,
           time:
             arg.sections[0].times[0].from +
             '00 - ' +
@@ -128,5 +155,5 @@ export const getCourseService = (dispatch: DispatchType) => {
     }
   }
 
-  return {getOnecourse, listCourse, getAllCourse}
+  return {getOnecourse, listCourse, getAllCourse, courseID}
 }

@@ -27,6 +27,7 @@ export function listCurses(
       faculty: arg.faculty,
       name: arg.name,
       section: arg.sections[0].section,
+      teacher: arg.sections[0].times[0].teacher,
       time:
         arg.sections[0].times[0].from +
         ':00 - ' +

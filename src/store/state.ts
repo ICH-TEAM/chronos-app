@@ -25,6 +25,7 @@ export interface AppState {
   course: CourseIDResponseData | null
   courses: CourseIDResponseData[] | null
   courseListInfo: CourseIDResponseData[] | null
+  courseID: string | null
 }
 
 export const initialState: AppState = {
@@ -34,4 +35,5 @@ export const initialState: AppState = {
   course: null,
   courses: null,
   courseListInfo: null,
+  courseID: null,
 }

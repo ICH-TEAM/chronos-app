@@ -51,6 +51,7 @@ const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
         faculty: arg.faculty,
         name: arg.name,
         section: arg.sections[0].section,
+        teacher: arg.sections[0].times[0].teacher,
         time:
           arg.sections[0].times[0].from +
           ':00 - ' +
@@ -79,7 +80,8 @@ const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
             code={dato.item.code}
             time={dato.item.time}
             onPress={() => {
-              navigation('Course')
+              services.courseID(dato.item.id)
+              navigation.navigate('Course')
             }}
             index={dato.item.index}
           />
@@ -111,7 +113,6 @@ const Home = ({navigation}: RootTabScreenProps<'Home'>) => {
           </View>
         </View>
       </View>
-      <Separator value={gap + 10} />
     </GeneralScreen>
   )
 }

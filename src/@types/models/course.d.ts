@@ -28,7 +28,9 @@ export interface ListCourse {
   career: string
   faculty: string
   name: string
+  teacher: string
   section: string
+  times?: Time[]
   time: string
   index: number
   createdAt: string

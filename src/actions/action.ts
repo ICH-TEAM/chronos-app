@@ -60,6 +60,20 @@ type GetOneCourseError = {
   type: ActionType.GET_ONE_COURSE_ERROR
 }
 
+// - - - - - obtener 1 curso
+type InfoCourseID = {
+  type: ActionType.COURSE_ID
+}
+
+type InfoCourseIDSuccess = {
+  type: ActionType.COURSE_ID_SUCCESS
+  payload: string
+}
+
+type InfoCourseIDError = {
+  type: ActionType.COURSE_ID_RESET
+}
+
 // - - - - - Guardar la info de los cursos
 type ListCourses = {
   type: ActionType.LIST_COURSES
@@ -107,3 +121,6 @@ export type AppAction =
   | GetAllCourse
   | GetAllCourseSuccess
   | GetAllCourseError
+  | InfoCourseID
+  | InfoCourseIDSuccess
+  | InfoCourseIDError
