@@ -88,6 +88,7 @@ const Courses = ({navigation}: RootTabScreenProps<'Home'>) => {
             </ScrollView>
           </View>
         </View>
+        {courses?.length > 2 ? <Separator value={170} /> : null}
       </ScrollView>
     </GeneralScreen>
   )

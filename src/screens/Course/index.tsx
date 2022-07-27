@@ -85,7 +85,7 @@ const Course = ({navigation}: RootTabScreenProps<'Home'>) => {
     <GeneralScreen navigation={navigation.navigate}>
       <View style={styles.container}>
         {loading ? <Text>Loading...</Text> : cursosInfo}
-        <Separator value={70} />
+        <Separator value={20} />
         <View style={styles.textTitle}>
           <Text
             style={styles.itemText}
@@ -95,7 +95,7 @@ const Course = ({navigation}: RootTabScreenProps<'Home'>) => {
             Regresar
           </Text>
         </View>
-        <Separator value={35} />
+        <Separator value={20} />
       </View>
     </GeneralScreen>
   )

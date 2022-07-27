@@ -54,8 +54,8 @@ const Settings = ({navigation}: RootTabScreenProps<'Home'>) => {
             value={career}
             onChangeText={setCareer}
           />
-          <Separator value={gap} />
-          <Input placeholder="Alert" keyboardType="number-pad" />
+          {/* <Separator value={gap} />
+          <Input placeholder="Alert" keyboardType="number-pad" /> */}
           <Separator value={gap} />
           <View style={styles.itemText}>
             <Checkbox

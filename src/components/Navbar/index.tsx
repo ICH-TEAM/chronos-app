@@ -49,6 +49,7 @@ const Navbar: FC<NavBarProps> = props => {
 }
 const styles = StyleSheet.create({
   container: {
+    alignSelf: 'flex-end',
     flex: 1,
     backgroundColor: 'white',
     position: 'absolute',
