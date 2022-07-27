@@ -1,5 +1,5 @@
 import {Button, Separator, StepItem} from '../../components'
-import {Text, View, StyleSheet, FlatList} from 'react-native'
+import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native'
 import React, {FC, useEffect, useState} from 'react'
 import {getRegisterInformationService} from '../../services/getRegisterInformation'
 import {useDispatch, useSelector} from 'react-redux'
@@ -23,7 +23,7 @@ const SelectSchool: FC<SelectSchoolProps> = props => {
   }
   const goToNextStep = () => {
     const schoolSelected = {
-      school: selected,
+      career: selected
     }
     if (selected) {
       saveChanges(schoolSelected)
@@ -64,6 +64,11 @@ const SelectSchool: FC<SelectSchoolProps> = props => {
             />
           </View>
           <Button label="Continuar" onPress={goToNextStep} />
+          <TouchableOpacity
+            style={{marginTop: 20}}
+            onPress={() => changeStep(-1)}>
+            <Text>Regresar</Text>
+          </TouchableOpacity>
         </View>
       )}
     </View>
@@ -74,17 +79,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 
   title: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   itemsContainer: {
     marginVertical: 30,
-    minHeight: 400,
-  },
+    minHeight: 400
+  }
 })
 
 export default SelectSchool

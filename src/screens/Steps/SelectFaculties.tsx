@@ -1,5 +1,5 @@
 import {Button, Separator, StepItem} from '../../components'
-import {Text, View, StyleSheet, FlatList} from 'react-native'
+import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native'
 import React, {FC, useEffect, useState} from 'react'
 import {getRegisterInformationService} from '../../services/getRegisterInformation'
 import {useDispatch, useSelector} from 'react-redux'
@@ -57,6 +57,11 @@ const SelectFaculties: FC<SelectFacultiesProps> = props => {
             />
           </View>
           <Button label="Continuar" onPress={goToNextStep} />
+          <TouchableOpacity
+            style={{marginTop: 20}}
+            onPress={() => changeStep(-1)}>
+            <Text>Regresar</Text>
+          </TouchableOpacity>
         </View>
       )}
     </View>
