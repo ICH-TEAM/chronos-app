@@ -4,6 +4,7 @@ import {Text, View, StyleSheet} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Checkbox from '@react-native-community/checkbox'
 import GeneralScreen from './../../layouts/GeneralScreen'
+import {useDispatch, useSelector} from 'react-redux'
 
 const gap = 25
 const Micro = (
@@ -13,7 +14,16 @@ const MicroSlash = (
   <Icon name="mic-off-outline" size={25} color="black" onPress={() => {}} />
 )
 const Settings = ({navigation}: RootTabScreenProps<'Home'>) => {
-  const [isSelected, setSelection] = useState(true)
+  const {user, loading} = useSelector((state: AppState) => state)
+  const [isSelected, setSelection] = useState(false)
+  const [name, setName] = useState(user?.name)
+  const [lastName, setLastName] = useState(user?.lastName)
+  const [faculty, setFaculty] = useState(user?.career.name)
+  const [career, setCareer] = useState(user?.faculty.name)
+
+  const handleSaveData = () => {
+    //saveChanges({name, lastName, faculty, career})
+  }
 
   return (
     <GeneralScreen navigation={navigation.navigate}>
@@ -25,11 +35,25 @@ const Settings = ({navigation}: RootTabScreenProps<'Home'>) => {
         </View>
         <Separator value={gap} />
         <View style={styles.itemsContainer}>
-          <Input placeholder="Nombre" />
+          <Input placeholder="Nombre" value={name} onChangeText={setName} />
           <Separator value={gap} />
-          <Input placeholder="Facultad" />
+          <Input
+            placeholder="Apellido"
+            value={lastName}
+            onChangeText={setLastName}
+          />
           <Separator value={gap} />
-          <Input placeholder="Carrera" />
+          <Input
+            placeholder="Facultad"
+            value={faculty}
+            onChangeText={setFaculty}
+          />
+          <Separator value={gap} />
+          <Input
+            placeholder="Carrera"
+            value={career}
+            onChangeText={setCareer}
+          />
           <Separator value={gap} />
           <Input placeholder="Alert" keyboardType="number-pad" />
           <Separator value={gap} />
@@ -51,7 +75,7 @@ const Settings = ({navigation}: RootTabScreenProps<'Home'>) => {
           </View>
           <Separator value={gap} />
           <Separator value={gap} />
-          <Button label="Guardar" />
+          <Button label="Guardar" onPress={handleSaveData} />
           <Separator value={gap} />
           <View style={styles.itemText}>
             <Text

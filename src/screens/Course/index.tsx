@@ -7,7 +7,9 @@ import {useSelector} from 'react-redux'
 import {ListCourse} from 'src/@types/models'
 
 const Course = ({navigation}: RootTabScreenProps<'Home'>) => {
-  const {courses, courseID, loading} = useSelector((state: AppState) => state)
+  const {user, courses, courseID, loading} = useSelector(
+    (state: AppState) => state,
+  )
   const cursosInf: ListCourse[] = []
   courses?.map(arg => {
     if (courseID === arg.id) {
@@ -55,7 +57,7 @@ const Course = ({navigation}: RootTabScreenProps<'Home'>) => {
       <Separator value={gap} />
       <Text style={styles.textLabel}> Carrera</Text>
       <Input
-        placeholder={data.career}
+        placeholder={user?.career.name}
         editable={false}
         placeholderTextColor={'#000000'}
       />
