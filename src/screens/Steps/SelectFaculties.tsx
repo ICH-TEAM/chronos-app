@@ -9,16 +9,27 @@ const gap = 25
 
 interface SelectFacultiesProps {
   changeStep: (value: number) => void
+  saveChanges: (value: Record<string, any>) => void
 }
 const SelectFaculties: FC<SelectFacultiesProps> = props => {
-  const {changeStep} = props
+  const {changeStep, saveChanges} = props
   const [selected, setSelected] = useState<string>('')
   const {faculties, loading} = useSelector((state: AppState) => state)
   const dispatch = useDispatch()
   const services = getRegisterInformationService(dispatch)
   const selectItem = (value: string) => {
-    console.log(value)
     setSelected(value)
+  }
+  const goToNextStep = () => {
+    const facultySelected = {
+      faculty: selected,
+    }
+    if (selected) {
+      saveChanges(facultySelected)
+      changeStep(1)
+    } else {
+      console.log('\nSelecciona una facultad')
+    }
   }
   useEffect(() => {
     services.getAllFaculties()
@@ -45,12 +56,7 @@ const SelectFaculties: FC<SelectFacultiesProps> = props => {
               )}
             />
           </View>
-          <Button
-            label="Continuar"
-            onPress={() => {
-              changeStep(1)
-            }}
-          />
+          <Button label="Continuar" onPress={goToNextStep} />
         </View>
       )}
     </View>

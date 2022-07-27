@@ -7,6 +7,7 @@ import SelectSchool from '../Steps/SelectSchool'
 const LogIn = () => {
   const [isSignIn, setIsSignIn] = useState<boolean>(true)
   const [step, setStep] = useState(0)
+  const [data, setData] = useState({})
   const handleChangeScreen = () => {
     setIsSignIn(!isSignIn)
   }
@@ -15,7 +16,8 @@ const LogIn = () => {
   }
 
   const handleChangeData = (values: Record<string, any>) => {
-    console.log(values)
+    let newData = {...data, ...values}
+    setData(newData)
   }
   if (isSignIn) return <SignIn changeScreen={handleChangeScreen} />
 
@@ -29,7 +31,12 @@ const LogIn = () => {
         />
       )
     case 1:
-      return <SelectFaculties changeStep={changeStep} />
+      return (
+        <SelectFaculties
+          saveChanges={handleChangeData}
+          changeStep={changeStep}
+        />
+      )
 
     case 2:
       return <SelectSchool changeStep={changeStep} />
