@@ -18,6 +18,7 @@ import {
   FacultiesResponseData,
   CourseIDResponseData,
   CareersResponseData,
+  CoursesResponseData,
 } from 'src/@types/models'
 import {AuthResponseData} from '../@types/models/user'
 
@@ -27,6 +28,7 @@ export interface AppState {
   user: AuthResponseData | null
   faculties: FacultiesResponseData[] | null
   careers: CareersResponseData[] | null
+  allCourses: CoursesResponseData[] | null
   course: CourseIDResponseData | null
   courses: CourseIDResponseData[] | null
   courseListInfo: CourseIDResponseData[] | null
@@ -38,6 +40,7 @@ export const initialState: AppState = {
   user: null,
   faculties: null,
   careers: null,
+  allCourses: null,
   course: null,
   courses: null,
   courseListInfo: null,

@@ -3,6 +3,7 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 import SelectFaculties from '../Steps/SelectFaculties'
 import SelectSchool from '../Steps/SelectSchool'
+import SelectCourses from '../Steps/SelectCourse'
 
 const LogIn = () => {
   const [isSignIn, setIsSignIn] = useState<boolean>(true)
@@ -43,6 +44,15 @@ const LogIn = () => {
     case 2:
       return (
         <SelectSchool
+          changeStep={changeStep}
+          currentInformation={data}
+          saveChanges={handleChangeData}
+        />
+      )
+
+    case 3:
+      return (
+        <SelectCourses
           changeStep={changeStep}
           currentInformation={data}
           saveChanges={handleChangeData}

@@ -77,6 +77,24 @@ const reducer = (state = initialState, action: AppAction) => {
         loading: false,
         careers: null,
       }
+    case ActionType.GET_COURSES_BY_FACULTY:
+      return {
+        ...state,
+        loading: true,
+        allCourses: null,
+      }
+    case ActionType.GET_COURSES_BY_FACULTY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        allCourses: action.payload,
+      }
+    case ActionType.GET_COURSES_BY_FACULTY_ERROR:
+      return {
+        ...state,
+        loading: false,
+        allCourses: null,
+      }
     case ActionType.GET_ONE_COURSE:
       return {
         ...state,

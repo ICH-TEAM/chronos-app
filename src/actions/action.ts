@@ -2,6 +2,7 @@ import {
   FacultiesResponseData,
   CourseIDResponseData,
   ListCourse,
+  CoursesResponseData,
 } from 'src/@types/models'
 import {AuthResponseData} from '../@types/models/user'
 import {ActionType} from './types'
@@ -46,6 +47,7 @@ type GetAllFacultiesError = {
   type: ActionType.GET_ALL_FACULTIES_ERROR
 }
 
+// Obtener lista de carreras
 type GetAllCareers = {
   type: ActionType.GET_CAREERS_BY_FACULTY
 }
@@ -57,6 +59,20 @@ type GetAllCareersSuccess = {
 
 type GetAllCareersError = {
   type: ActionType.GET_CAREERS_BY_FACULTY_ERROR
+}
+
+// Obtener lista de cursos
+type GetAllCourses = {
+  type: ActionType.GET_COURSES_BY_FACULTY
+}
+
+type GetAllCoursesSuccess = {
+  type: ActionType.GET_COURSES_BY_FACULTY_SUCCESS
+  payload: CoursesResponseData[]
+}
+
+type GetAllCoursesError = {
+  type: ActionType.GET_COURSES_BY_FACULTY_ERROR
 }
 
 // - - - - - obtener 1 curso
@@ -128,6 +144,9 @@ export type AppAction =
   | GetAllCareers
   | GetAllCareersSuccess
   | GetAllCareersError
+  | GetAllCourses
+  | GetAllCoursesSuccess
+  | GetAllCoursesError
   | GetOneCourse
   | GetOneCourseSuccess
   | GetOneCourseError

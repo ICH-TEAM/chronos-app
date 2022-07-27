@@ -74,5 +74,39 @@ export const getRegisterInformationService = (dispatch: DispatchType) => {
     }
   }
 
-  return {getAllFaculties, getAllCareers}
+  const getAllCourses = async (facultyID: string) => {
+    try {
+      dispatch({
+        type: ActionType.GET_COURSES_BY_FACULTY,
+      })
+
+      const response = await appApi.getAllCourses(facultyID)
+      if (response.status === 200 || response.status === 201) {
+        dispatch({
+          type: ActionType.GET_COURSES_BY_FACULTY_SUCCESS,
+          payload: response.data.message,
+        })
+        console.log('\nresponse.data.message')
+        console.log(response.data)
+      } else {
+        const {errors} = response.request
+
+        throw errors
+      }
+    } catch (err) {
+      Alert.alert('Hubo un error', 'Intentalo de nuevo', [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ])
+      dispatch({
+        type: ActionType.GET_COURSES_BY_FACULTY_ERROR,
+      })
+    }
+  }
+
+  return {getAllFaculties, getAllCareers, getAllCourses}
 }
