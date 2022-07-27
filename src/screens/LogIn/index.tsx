@@ -13,6 +13,8 @@ const LogIn = () => {
   }
   const changeStep = (value: number) => {
     setStep(step + value)
+    console.log('\n\n\ndata')
+    console.log(data)
   }
 
   const handleChangeData = (values: Record<string, any>) => {
@@ -39,7 +41,14 @@ const LogIn = () => {
       )
 
     case 2:
-      return <SelectSchool changeStep={changeStep} />
+      return (
+        <SelectSchool
+          changeStep={changeStep}
+          currentInformation={data}
+          saveChanges={handleChangeData}
+        />
+      )
+
     default:
       return (
         <SignUp

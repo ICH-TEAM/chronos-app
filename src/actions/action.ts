@@ -46,6 +46,19 @@ type GetAllFacultiesError = {
   type: ActionType.GET_ALL_FACULTIES_ERROR
 }
 
+type GetAllCareers = {
+  type: ActionType.GET_CAREERS_BY_FACULTY
+}
+
+type GetAllCareersSuccess = {
+  type: ActionType.GET_CAREERS_BY_FACULTY_SUCCESS
+  payload: FacultiesResponseData[]
+}
+
+type GetAllCareersError = {
+  type: ActionType.GET_CAREERS_BY_FACULTY_ERROR
+}
+
 // - - - - - obtener 1 curso
 type GetOneCourse = {
   type: ActionType.GET_ONE_COURSE
@@ -112,6 +125,9 @@ export type AppAction =
   | GetAllFaculties
   | GetAllFacultiesSuccess
   | GetAllFacultiesError
+  | GetAllCareers
+  | GetAllCareersSuccess
+  | GetAllCareersError
   | GetOneCourse
   | GetOneCourseSuccess
   | GetOneCourseError
