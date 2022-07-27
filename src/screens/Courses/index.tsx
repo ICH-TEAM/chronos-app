@@ -12,62 +12,6 @@ import {
 import {getCourseService} from '../../services/getCourse'
 //import {CourseID, CourseIDResponseData, Course} from 'src/@types/models'
 
-// interface time {
-//   from: number
-//   to: number
-//   day: number
-//   teacher: string
-// }
-// interface section {
-//   section: string
-//   times: time[]
-// }
-// interface info {
-//   code: string
-//   career: string
-//   faculty: string
-//   name: string
-//   sections: section[]
-//   id: string
-// }
-// const sections = {
-//   section: 'A',
-//   times: [
-//     {
-//       from: 10,
-//       to: 12,
-//       day: 1,
-//       teacher: 'C. LARA',
-//     },
-//   ],
-// }
-// const data: info[] = [
-//   {
-//     code: 'CC451',
-//     career: 'Ciencias de la computacion',
-//     faculty: 'Facultad de ciencias',
-//     name: 'Interacción Humano-Computador',
-//     sections: [sections],
-//     id: '62c5d20488525d976c427a10',
-//   },
-//   {
-//     code: 'CC3S2',
-//     career: 'Ciencias de la computacion',
-//     faculty: 'Facultad de ciencias',
-//     name: 'DESARROLLO DE SOFTWARE',
-//     sections: [sections],
-//     id: '62c5ce15ca468fa02347220a',
-//   },
-//   {
-//     code: 'CC411',
-//     career: 'Ciencias de la computacion',
-//     faculty: 'Facultad de ciencias',
-//     name: 'SEGURIDAD EN SISTEMAS INFORMATICOS',
-//     sections: [sections],
-//     id: '62c5cec3ca468fa02347220c',
-//   },
-// ]
-
 const Courses = ({navigation}: RootTabScreenProps<'Home'>) => {
   const {user, courses, loading} = useSelector((state: AppState) => state)
   const dispatch = useDispatch()
