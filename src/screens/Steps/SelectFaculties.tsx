@@ -1,5 +1,5 @@
 import {Button, Separator, StepItem} from '../../components'
-import {Text, View, StyleSheet, FlatList} from 'react-native'
+import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native'
 import React, {FC, useEffect, useState} from 'react'
 import {getRegisterInformationService} from '../../services/getRegisterInformation'
 import {useDispatch, useSelector} from 'react-redux'
@@ -9,16 +9,27 @@ const gap = 25
 
 interface SelectFacultiesProps {
   changeStep: (value: number) => void
+  saveChanges: (value: Record<string, any>) => void
 }
 const SelectFaculties: FC<SelectFacultiesProps> = props => {
-  const {changeStep} = props
+  const {changeStep, saveChanges} = props
   const [selected, setSelected] = useState<string>('')
   const {faculties, loading} = useSelector((state: AppState) => state)
   const dispatch = useDispatch()
   const services = getRegisterInformationService(dispatch)
   const selectItem = (value: string) => {
-    console.log(value)
     setSelected(value)
+  }
+  const goToNextStep = () => {
+    const facultySelected = {
+      faculty: selected,
+    }
+    if (selected) {
+      saveChanges(facultySelected)
+      changeStep(1)
+    } else {
+      console.log('\nSelecciona una facultad')
+    }
   }
   useEffect(() => {
     services.getAllFaculties()
@@ -45,12 +56,12 @@ const SelectFaculties: FC<SelectFacultiesProps> = props => {
               )}
             />
           </View>
-          <Button
-            label="Continuar"
-            onPress={() => {
-              changeStep(1)
-            }}
-          />
+          <Button label="Continuar" onPress={goToNextStep} />
+          <TouchableOpacity
+            style={{marginTop: 20}}
+            onPress={() => changeStep(-1)}>
+            <Text>Regresar</Text>
+          </TouchableOpacity>
         </View>
       )}
     </View>

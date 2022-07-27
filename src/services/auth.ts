@@ -1,7 +1,7 @@
 // import {Alert} from 'react-native'
 import {Alert} from 'react-native'
 import {DispatchType} from '../@types/models/api'
-import {Auth, RegisterUser} from '../@types/models/user'
+import {Auth} from '../@types/models/user'
 import {ActionType} from '../actions/types'
 import {ApiLogin} from '../api/user'
 
@@ -40,13 +40,13 @@ export const authService = (dispatch: DispatchType) => {
     }
   }
 
-  const registerUser = async (args: RegisterUser) => {
+  const registerUser = async (args: Record<string, any>) => {
     try {
       dispatch({
         type: ActionType.REGISTER_USER,
       })
 
-      const response = await appApi.auth(args)
+      const response = await appApi.registerUser(args)
       if (response.status === 200 || response.status === 201) {
         dispatch({
           type: ActionType.REGISTER_USER_SUCCESS,
